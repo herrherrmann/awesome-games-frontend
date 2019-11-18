@@ -1,7 +1,8 @@
-import React from 'react';
-import { Game as GameType } from '../../common/types';
-import styled from '../../common/theme';
 import { map } from 'ramda';
+import React from 'react';
+import styled from '../../common/theme';
+import { Game as GameType } from '../../common/types';
+import Link from '../Link';
 
 type Props = { game: GameType };
 
@@ -41,7 +42,19 @@ export default function Game({ game }: Props) {
 		<Container>
 			<CoverContainer></CoverContainer>
 			<div>
-				<Name>{game.name}</Name>
+				<Name>
+					{game.links.website ? (
+						<Link
+							href={game.links.website}
+							target="_blank"
+							rel="noopener noreferrer"
+						>
+							{game.name}
+						</Link>
+					) : (
+						game.name
+					)}
+				</Name>
 				<br />
 				{map(
 					genre => (
