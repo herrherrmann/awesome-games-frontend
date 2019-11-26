@@ -15,12 +15,21 @@ const HeaderInner = styled.div(({ theme }) => ({
 	justifyContent: 'space-between',
 	maxWidth: theme.widths.maxContentWidth,
 	margin: '0 auto',
+	padding: theme.spacings.default,
 }));
 
-const Links = styled.div(({ theme }) => ({
+const HeaderLinks = styled.div(({ theme }) => ({
 	display: 'grid',
 	gridAutoFlow: 'column',
+	alignItems: 'start',
 	gridGap: theme.spacings.large,
+}));
+
+const HeaderLink = styled(Link)(({ theme }) => ({
+	color: theme.colors.text,
+	'&:hover': {
+		color: theme.colors.text,
+	},
 }));
 
 export default function AppHeader() {
@@ -33,22 +42,20 @@ export default function AppHeader() {
 					</span>{' '}
 					<span>Awesome Games</span>
 				</div>
-				<Links>
-					<Link
+				<HeaderLinks>
+					<HeaderLink
 						href="https://github.com/herrherrmann/awesome-lan-party-games"
-						target="_blank"
-						rel="noopener noreferrer"
+						openInNewTab={true}
 					>
 						Source
-					</Link>
-					<Link
+					</HeaderLink>
+					<HeaderLink
 						href="https://github.com/herrherrmann/awesome-games-frontend"
-						target="_blank"
-						rel="noopener noreferrer"
+						openInNewTab={true}
 					>
 						GitHub
-					</Link>
-				</Links>
+					</HeaderLink>
+				</HeaderLinks>
 			</HeaderInner>
 		</Header>
 	);

@@ -8,6 +8,7 @@ export type Theme = {
 		text: string;
 		lightGrey: string;
 		primary: string;
+		primaryHighlight: string;
 		secondary: string;
 		error: string;
 	};
@@ -63,8 +64,9 @@ const themes: Record<ColorScheme, Theme> = {
 			background: '#f2f2f2',
 			text: '#333333',
 			lightGrey: '#e5e0e4',
-			primary: '#56cbf9',
-			secondary: '#0d92c6',
+			primary: '#00a4e5',
+			primaryHighlight: '#008ac1',
+			secondary: '#81f4e1',
 			error: '#ff729f',
 		},
 		spacings,
@@ -79,6 +81,7 @@ const themes: Record<ColorScheme, Theme> = {
 			text: '#333333',
 			lightGrey: '#d3c4d1',
 			primary: '#56cbf9',
+			primaryHighlight: '#009bd8',
 			secondary: '#81f4e1',
 			error: '#ff729f',
 		},
