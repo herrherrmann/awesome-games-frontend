@@ -45,13 +45,20 @@ const Genres = styled.div(({ theme }) => ({
 	flexWrap: 'wrap',
 }));
 
-const Genre = styled.small(({ theme }) => ({
+const Pillbox = styled.small(({ theme }) => ({
 	fontSize: theme.fontSizes.small,
-	backgroundColor: theme.colors.lightGrey,
 	borderRadius: theme.fontSizes.small,
 	padding: `${theme.spacings.small} ${theme.spacings.default}`,
 	marginRight: theme.spacings.default,
 	marginBottom: theme.spacings.default,
+}));
+
+const Genre = styled(Pillbox)(({ theme }) => ({
+	backgroundColor: theme.colors.lightGrey,
+}));
+
+const FreeBadge = styled(Pillbox)(({ theme }) => ({
+	backgroundColor: theme.colors.lightGreen,
 }));
 
 const GameLinks = styled.div(({ theme }) => ({
@@ -67,7 +74,8 @@ const GameLink = styled(Link)(({ theme }) => ({
 	padding: theme.spacings.default,
 	marginRight: theme.spacings.default,
 	'&:hover': {
-		border: `1px solid ${theme.colors.lightGrey}`,
+		color: theme.colors.text,
+		border: `1px solid ${theme.colors.grey}`,
 	},
 }));
 
@@ -87,11 +95,10 @@ export default function Game({ game }: Props) {
 						)}
 					</Name>
 					<Genres>
+						{game.isFree && <FreeBadge>Free</FreeBadge>}
 						{map(
 							genre => (
-								<Genre key={genre} title={`Genre: ${genre}`}>
-									{genre}
-								</Genre>
+								<Genre key={genre}>{genre}</Genre>
 							),
 							game.genres,
 						)}

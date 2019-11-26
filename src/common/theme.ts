@@ -6,7 +6,9 @@ export type Theme = {
 	colors: {
 		background: string;
 		text: string;
+		grey: string;
 		lightGrey: string;
+		lightGreen: string;
 		primary: string;
 		primaryHighlight: string;
 		secondary: string;
@@ -63,7 +65,9 @@ const themes: Record<ColorScheme, Theme> = {
 		colors: {
 			background: '#f2f2f2',
 			text: '#333333',
+			grey: '#ccc7cb',
 			lightGrey: '#e5e0e4',
+			lightGreen: '#9bff66',
 			primary: '#00a4e5',
 			primaryHighlight: '#008ac1',
 			secondary: '#81f4e1',
@@ -79,7 +83,9 @@ const themes: Record<ColorScheme, Theme> = {
 			// TODO
 			background: '#f2f2f2',
 			text: '#333333',
+			grey: '#ccc7cb',
 			lightGrey: '#d3c4d1',
+			lightGreen: '#9bff66',
 			primary: '#56cbf9',
 			primaryHighlight: '#009bd8',
 			secondary: '#81f4e1',
