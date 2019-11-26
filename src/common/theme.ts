@@ -18,6 +18,9 @@ export type Theme = {
 		huge: string;
 		borderRadius: string;
 	};
+	widths: {
+		maxContentWidth: string;
+	};
 	fontSizes: {
 		small: string;
 		default: string;
@@ -50,6 +53,10 @@ const fontWeights = {
 	bold: 600,
 };
 
+const widths = {
+	maxContentWidth: '800px',
+};
+
 const themes: Record<ColorScheme, Theme> = {
 	light: {
 		colors: {
@@ -63,6 +70,7 @@ const themes: Record<ColorScheme, Theme> = {
 		spacings,
 		fontSizes,
 		fontWeights,
+		widths,
 	},
 	dark: {
 		colors: {
@@ -77,6 +85,7 @@ const themes: Record<ColorScheme, Theme> = {
 		spacings,
 		fontSizes,
 		fontWeights,
+		widths,
 	},
 };
 
@@ -86,7 +95,8 @@ export function getCurrentTheme(): Theme {
 }
 
 export function getColorScheme(): ColorScheme | null {
-	const isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches;
+	const isDarkMode = window.matchMedia('(prefers-color-scheme: dark)')
+		.matches;
 	if (isDarkMode) {
 		return 'dark';
 	}

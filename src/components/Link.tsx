@@ -5,10 +5,10 @@ interface Props extends HTMLProps<HTMLAnchorElement> {}
 
 const A = styled.a<Props>(({ theme }) => ({
 	color: theme.colors.primary,
-	'text-decoration': 'none',
+	textDecoration: 'none',
 	'&:hover': {
 		color: theme.colors.secondary,
-		'text-decoration': 'none',
+		textDecoration: 'none',
 	},
 }));
 
