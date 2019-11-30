@@ -8,6 +8,7 @@ import gamePadIcon from './gamepad.svg';
 type Props = { game: GameType };
 
 const Container = styled.div(({ theme }) => ({
+	backgroundColor: theme.colors.cardBackground,
 	display: 'flex',
 	flexWrap: 'wrap',
 	justifyContent: 'space-between',

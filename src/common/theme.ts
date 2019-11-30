@@ -5,6 +5,7 @@ type ColorScheme = 'dark' | 'light';
 export type Theme = {
 	colors: {
 		background: string;
+		cardBackground: string;
 		text: string;
 		grey: string;
 		lightGrey: string;
@@ -63,7 +64,8 @@ const widths = {
 const themes: Record<ColorScheme, Theme> = {
 	light: {
 		colors: {
-			background: '#f2f2f2',
+			background: '#f9f9f9',
+			cardBackground: '#ffffff',
 			text: '#333333',
 			grey: '#ccc7cb',
 			lightGrey: '#e5e0e4',
@@ -81,7 +83,8 @@ const themes: Record<ColorScheme, Theme> = {
 	dark: {
 		colors: {
 			// TODO
-			background: '#f2f2f2',
+			background: '#f9f9f9',
+			cardBackground: '#ffffff',
 			text: '#333333',
 			grey: '#ccc7cb',
 			lightGrey: '#d3c4d1',
