@@ -3,6 +3,7 @@ import { ThemeProvider } from 'emotion-theming';
 import React, { useState } from 'react';
 import { getCurrentTheme, Theme } from './common/theme';
 import AppBody from './components/AppBody';
+import AppFooter from './components/AppFooter';
 import AppHeader from './components/AppHeader';
 import Games from './components/Games';
 
@@ -30,6 +31,7 @@ const App: React.FC = () => {
 			<AppBody>
 				<Games />
 			</AppBody>
+			<AppFooter />
 		</ThemeProvider>
 	);
 };

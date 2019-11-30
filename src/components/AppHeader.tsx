@@ -3,8 +3,8 @@ import styled from '../common/theme';
 import Link from './Link';
 
 const Header = styled.header(({ theme }) => ({
-	backgroundColor: theme.colors.lightGrey,
-	borderBottom: `1px solid ${theme.colors.text}`,
+	backgroundColor: theme.colors.primary,
+	color: theme.colors.lightGrey,
 	padding: theme.spacings.large,
 	fontSize: theme.fontSizes.large,
 	fontWeight: theme.fontWeights.bold,
@@ -26,9 +26,10 @@ const HeaderLinks = styled.div(({ theme }) => ({
 }));
 
 const HeaderLink = styled(Link)(({ theme }) => ({
-	color: theme.colors.text,
+	color: theme.colors.lightGrey,
 	'&:hover': {
-		color: theme.colors.text,
+		color: theme.colors.lightGrey,
+		textDecoration: 'underline',
 	},
 }));
 
@@ -37,10 +38,12 @@ export default function AppHeader() {
 		<Header>
 			<HeaderInner>
 				<div>
-					<span role="img" aria-label="Fire!">
-						🔥
-					</span>{' '}
-					<span>Awesome Games</span>
+					<HeaderLink href="/">
+						<span role="img" aria-label="Fire!">
+							🔥
+						</span>{' '}
+						Awesome Games
+					</HeaderLink>
 				</div>
 				<HeaderLinks>
 					<HeaderLink
