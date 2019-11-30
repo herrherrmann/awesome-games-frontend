@@ -3,6 +3,7 @@ import React from 'react';
 import styled from '../../../common/theme';
 import { Game as GameType } from '../../../common/types';
 import Link from '../../Link';
+import gamePadIcon from './gamepad.svg';
 
 type Props = { game: GameType };
 
@@ -22,15 +23,30 @@ const NameContainer = styled.div(({ theme }) => ({
 
 const CoverContainer = styled.div<{ size?: string }>(
 	({ theme, size = '50px' }) => ({
+		display: 'flex',
+		justifyContent: 'center',
+		alignItems: 'center',
 		minWidth: size,
 		width: size,
 		height: size,
 		minHeight: size,
+		overflow: 'hidden',
 		marginRight: theme.spacings.default,
 		borderRadius: theme.spacings.borderRadius,
 		backgroundColor: theme.colors.lightGrey,
 	}),
 );
+
+const Cover = styled.img(() => ({
+	width: '100%',
+	height: 'auto',
+}));
+
+const CoverPlaceholder = styled.img(() => ({
+	width: '75%',
+	height: 'auto',
+	opacity: 0.25,
+}));
 
 const Name = styled.h3(({ theme }) => ({
 	fontSize: theme.fontSizes.default,
@@ -83,7 +99,13 @@ export default function Game({ game }: Props) {
 	return (
 		<Container>
 			<NameContainer>
-				<CoverContainer></CoverContainer>
+				<CoverContainer>
+					{game.coverUrl ? (
+						<Cover src={game.coverUrl} alt="Game cover art" />
+					) : (
+						<CoverPlaceholder src={gamePadIcon} alt="" />
+					)}
+				</CoverContainer>
 				<div>
 					<Name>
 						{game.links.website ? (

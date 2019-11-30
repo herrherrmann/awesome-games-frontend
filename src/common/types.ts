@@ -9,6 +9,7 @@ export type Game = {
 	description: string | null;
 	genres: string[];
 	releaseYear: number | null;
+	coverUrl: string | null;
 	rating: number | null;
 	isFree: boolean;
 	links: {
