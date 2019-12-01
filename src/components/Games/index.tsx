@@ -4,6 +4,7 @@ import { useAsync } from 'react-async';
 import styled from '../../common/theme';
 import GameList from './GameList';
 import { loadGames } from './service';
+import Link from '../Link';
 
 type Props = {};
 
@@ -25,7 +26,12 @@ export default function Games(props: Props) {
 					</span>{' '}
 					Error:
 				</strong>{' '}
-				Games could not be loaded ({error.message}).
+				Games could not be loaded.
+				<br />
+				<small>
+					The server might be starting right now, please{' '}
+					<Link href="/">try again</Link> in a minute.
+				</small>
 			</Error>
 		);
 	}
