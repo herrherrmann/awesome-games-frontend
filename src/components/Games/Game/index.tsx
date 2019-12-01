@@ -63,7 +63,6 @@ const Genres = styled.div(({ theme }) => ({
 }));
 
 const Pillbox = styled.small(({ theme }) => ({
-	fontSize: theme.fontSizes.small,
 	borderRadius: theme.fontSizes.small,
 	padding: `${theme.spacings.small} ${theme.spacings.default}`,
 	marginRight: theme.spacings.default,

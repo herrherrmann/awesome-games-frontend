@@ -27,7 +27,6 @@ const HeaderLink = styled(Link)(({ theme }) => ({
 
 const Subtitle = styled.small(({ theme }) => ({
 	color: theme.colors.lightGrey,
-	fontSize: theme.fontSizes.small,
 }));
 
 export default function AppHeader() {

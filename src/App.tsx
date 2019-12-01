@@ -25,6 +25,12 @@ const App: React.FC = () => {
 						backgroundColor: theme.colors.background,
 						fontWeight: theme.fontWeights.normal,
 					},
+					small: {
+						fontSize: theme.fontSizes.small,
+					},
+					strong: {
+						fontWeight: theme.fontWeights.bold,
+					},
 				})}
 			/>
 			<AppHeader />
