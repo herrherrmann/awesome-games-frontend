@@ -21,7 +21,9 @@ const FooterInner = styled.div(({ theme }) => ({
 }));
 
 const FooterLink = styled(Link)(() => ({
-	marginLeft: '.5em',
+	'& + &': {
+		marginLeft: '.5em',
+	},
 }));
 
 export default function AppFooter() {
