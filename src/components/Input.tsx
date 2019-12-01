@@ -10,6 +10,12 @@ const InputElement = styled.input<Props>(({ theme }) => ({
 	borderRadius: theme.spacings.borderRadius,
 	color: theme.colors.text,
 	fontSize: theme.fontSizes.default,
+	'&:hover': {
+		border: `1px solid ${theme.colors.grey}`,
+	},
+	'&:focus': {
+		border: `1px solid ${theme.colors.primary}`,
+	},
 }));
 
 export default function Input(props: Props) {
