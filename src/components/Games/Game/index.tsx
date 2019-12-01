@@ -23,7 +23,7 @@ const NameContainer = styled.div(({ theme }) => ({
 }));
 
 const CoverContainer = styled.div<{ size?: string }>(
-	({ theme, size = '50px' }) => ({
+	({ theme, size = '43px' }) => ({
 		display: 'flex',
 		justifyContent: 'center',
 		alignItems: 'center',
@@ -53,7 +53,7 @@ const Name = styled.h3(({ theme }) => ({
 	fontSize: theme.fontSizes.default,
 	fontWeight: theme.fontWeights.bold,
 	wordBreak: 'break-all',
-	margin: `0 0 ${theme.spacings.default} 0`,
+	margin: 0,
 	minWidth: '150px',
 }));
 
@@ -66,7 +66,7 @@ const Pillbox = styled.small(({ theme }) => ({
 	borderRadius: theme.fontSizes.small,
 	padding: `${theme.spacings.small} ${theme.spacings.default}`,
 	marginRight: theme.spacings.default,
-	marginBottom: theme.spacings.default,
+	marginTop: theme.spacings.default,
 }));
 
 const Genre = styled(Pillbox)(({ theme }) => ({
@@ -88,7 +88,9 @@ const ButtonLink = styled(Link)(({ theme }) => ({
 	border: `1px solid ${theme.colors.lightGrey}`,
 	borderRadius: theme.spacings.borderRadius,
 	padding: theme.spacings.default,
-	marginRight: theme.spacings.default,
+	'& + &': {
+		marginLeft: theme.spacings.default,
+	},
 	'&:hover': {
 		color: theme.colors.text,
 		border: `1px solid ${theme.colors.grey}`,
