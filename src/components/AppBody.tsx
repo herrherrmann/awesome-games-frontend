@@ -3,11 +3,11 @@ import styled from '../common/theme';
 
 type Props = {};
 
-const headerHeight = '55px';
+const roughHeaderAndFooterHeight = '100px';
 
 const Body = styled.main(({ theme }) => ({
 	maxWidth: theme.widths.maxContentWidth,
-	minHeight: `calc(100vh - ${headerHeight})`,
+	minHeight: `calc(100vh - ${roughHeaderAndFooterHeight})`,
 	margin: '0 auto',
 	padding: theme.spacings.default,
 }));
