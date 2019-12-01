@@ -6,14 +6,17 @@ const Header = styled.header(({ theme }) => ({
 	backgroundColor: theme.colors.primary,
 	color: theme.colors.lightGrey,
 	padding: theme.spacings.large,
+	marginBottom: theme.spacings.default,
 	fontSize: theme.fontSizes.large,
 	fontWeight: theme.fontWeights.bold,
+	boxShadow: `0px 3px 5px -3px rgba(0, 0, 0, 0.25)`,
 }));
 
 const HeaderInner = styled.div(({ theme }) => ({
 	display: 'flex',
 	flexFlow: 'column',
 	maxWidth: theme.widths.maxContentWidth,
+	padding: `0 ${theme.spacings.default}`,
 	margin: '0 auto',
 }));
 
