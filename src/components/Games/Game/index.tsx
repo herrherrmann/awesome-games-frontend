@@ -1,5 +1,5 @@
 import { map } from 'ramda';
-import React from 'react';
+import React, { useCallback } from 'react';
 import styled from '../../../common/theme';
 import { Game as GameType } from '../../../common/types';
 import Link from '../../Link';
@@ -7,7 +7,11 @@ import gamePadIcon from './gamepad.svg';
 
 type Props = { game: GameType };
 
-const Container = styled.div(({ theme }) => ({
+type GameCardProps = {
+	hasLink: boolean;
+};
+
+const GameCard = styled.div<GameCardProps>(({ hasLink, theme }) => ({
 	backgroundColor: theme.colors.cardBackground,
 	display: 'flex',
 	flexWrap: 'wrap',
@@ -16,6 +20,12 @@ const Container = styled.div(({ theme }) => ({
 	marginBottom: theme.spacings.default,
 	border: `1px solid ${theme.colors.lightGrey}`,
 	borderRadius: theme.spacings.borderRadius,
+	'&:hover': hasLink
+		? {
+				cursor: 'pointer',
+				border: `1px solid ${theme.colors.grey}`,
+		  }
+		: {},
 }));
 
 const NameContainer = styled.div(({ theme }) => ({
@@ -99,8 +109,23 @@ const ButtonLink = styled(Link)(({ theme }) => ({
 }));
 
 export default function Game({ game }: Props) {
+	const hasWebsiteLink = !!game.links.website;
+	const handleClick = useCallback(() => {
+		if (hasWebsiteLink) {
+			window.open(game.links.website, '_blank');
+		}
+	}, [hasWebsiteLink, game]);
+	const preventBubbling = useCallback(event => {
+		event.stopPropagation();
+	}, []);
 	return (
-		<Container>
+		<GameCard
+			onClick={handleClick}
+			hasLink={hasWebsiteLink}
+			tabIndex={hasWebsiteLink ? 0 : undefined}
+			role={hasWebsiteLink ? 'link' : undefined}
+			aria-label={hasWebsiteLink ? `${game.name}'s website` : undefined}
+		>
 			<NameContainer>
 				<CoverContainer>
 					{game.coverUrl ? (
@@ -110,15 +135,7 @@ export default function Game({ game }: Props) {
 					)}
 				</CoverContainer>
 				<div>
-					<Name>
-						{game.links.website ? (
-							<Link href={game.links.website} openInNewTab>
-								{game.name}
-							</Link>
-						) : (
-							game.name
-						)}
-					</Name>
+					<Name>{game.name}</Name>
 					<Genres>
 						{game.isFree && <FreeBadge>Free</FreeBadge>}
 						{map(
@@ -132,21 +149,33 @@ export default function Game({ game }: Props) {
 			</NameContainer>
 			<GameLinks>
 				{game.links.website && (
-					<ButtonLink openInNewTab href={game.links.website}>
+					<ButtonLink
+						onClick={preventBubbling}
+						openInNewTab
+						href={game.links.website}
+					>
 						Website
 					</ButtonLink>
 				)}
 				{game.links.igdb && (
-					<ButtonLink openInNewTab href={game.links.igdb}>
+					<ButtonLink
+						onClick={preventBubbling}
+						openInNewTab
+						href={game.links.igdb}
+					>
 						IGDB
 					</ButtonLink>
 				)}
 				{game.links.steam && (
-					<ButtonLink openInNewTab href={game.links.steam}>
+					<ButtonLink
+						onClick={preventBubbling}
+						openInNewTab
+						href={game.links.steam}
+					>
 						Steam
 					</ButtonLink>
 				)}
 			</GameLinks>
-		</Container>
+		</GameCard>
 	);
 }
