@@ -1,21 +1,29 @@
-/** @tsx tsx */
 import React from 'react';
 import { useAsync } from 'react-async';
 import styled from '../../common/theme';
+import Link from '../Link';
+import LoadingSpinner from '../LoadingSpinner';
 import GameList from './GameList';
 import { loadGames } from './service';
-import Link from '../Link';
 
-type Props = {};
-
-const Error = styled.div(props => ({
-	color: props.theme.colors.error,
+const Error = styled.div(({ theme }) => ({
+	color: theme.colors.error,
 }));
 
-export default function Games(props: Props) {
+const Loading = styled.div(({ theme }) => ({
+	padding: theme.spacings.default,
+	fontSize: theme.fontSizes.large,
+	textAlign: 'center',
+}));
+
+export default function Games() {
 	const { data: games, isPending, error } = useAsync(loadGames);
 	if (isPending) {
-		return <>Loading games…</>;
+		return (
+			<Loading>
+				<LoadingSpinner /> Loading games…
+			</Loading>
+		);
 	}
 	if (error) {
 		return (
