@@ -7,6 +7,7 @@ import { Game as GameType } from '../../common/types';
 import Input from '../Input';
 import Link from '../Link';
 import Game from './Game';
+import ResultsCount from './ResultsCount';
 import { filterGames } from './service';
 
 type Props = {
@@ -65,6 +66,7 @@ export default function GameList({ games }: Props) {
 					placeholder="🔍 Search for games…"
 				/>
 			</SearchBox>
+			<ResultsCount count={filteredGames.length} />
 			{map(
 				game => (
 					<Game key={game.id} game={game} />
