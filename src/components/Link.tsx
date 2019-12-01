@@ -9,7 +9,7 @@ const A = styled.a<Props>(({ theme }) => ({
 	color: theme.colors.primary,
 	textDecoration: 'none',
 	'&:hover': {
-		color: theme.colors.primaryHighlight,
+		color: theme.colors.primaryDark,
 		textDecoration: 'underline',
 	},
 }));

@@ -26,6 +26,12 @@ const GameCard = styled.div<GameCardProps>(({ hasLink, theme }) => ({
 				border: `1px solid ${theme.colors.grey}`,
 		  }
 		: {},
+	'&:focus': hasLink
+		? {
+				border: `1px solid ${theme.colors.primary}`,
+				boxShadow: `0 0 0 1px ${theme.colors.primary}`,
+		  }
+		: {},
 }));
 
 const NameContainer = styled.div(({ theme }) => ({
@@ -105,6 +111,10 @@ const ButtonLink = styled(Link)(({ theme }) => ({
 		color: theme.colors.text,
 		border: `1px solid ${theme.colors.grey}`,
 		textDecoration: 'none',
+	},
+	'&:focus': {
+		border: `1px solid ${theme.colors.primary}`,
+		boxShadow: `0 0 0 1px ${theme.colors.primary}`,
 	},
 }));
 

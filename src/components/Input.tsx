@@ -14,7 +14,9 @@ const InputElement = styled.input<Props>(({ theme }) => ({
 		border: `1px solid ${theme.colors.grey}`,
 	},
 	'&:focus': {
+		outline: 'none',
 		border: `1px solid ${theme.colors.primary}`,
+		boxShadow: `0 0 0 1px ${theme.colors.primary}`,
 	},
 }));
 

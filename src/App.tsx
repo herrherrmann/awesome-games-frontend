@@ -31,6 +31,19 @@ const App: React.FC = () => {
 					strong: {
 						fontWeight: theme.fontWeights.bold,
 					},
+					'*:focus': {
+						outline: 'none',
+						boxShadow: `0 0 0 2px ${theme.colors.primary}`,
+					},
+					'::selection': {
+						background:
+							theme.colors
+								.primaryLight /* WebKit/Blink Browsers */,
+					},
+					'::-moz-selection': {
+						background:
+							theme.colors.primaryLight /* Gecko Browsers */,
+					},
 				})}
 			/>
 			<AppHeader />
