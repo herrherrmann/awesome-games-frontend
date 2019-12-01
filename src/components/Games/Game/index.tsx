@@ -84,7 +84,7 @@ const GameLinks = styled.div(({ theme }) => ({
 	minWidth: '150px',
 }));
 
-const GameLink = styled(Link)(({ theme }) => ({
+const ButtonLink = styled(Link)(({ theme }) => ({
 	color: theme.colors.text,
 	border: `1px solid ${theme.colors.lightGrey}`,
 	borderRadius: theme.spacings.borderRadius,
@@ -93,6 +93,7 @@ const GameLink = styled(Link)(({ theme }) => ({
 	'&:hover': {
 		color: theme.colors.text,
 		border: `1px solid ${theme.colors.grey}`,
+		textDecoration: 'none',
 	},
 }));
 
@@ -130,19 +131,19 @@ export default function Game({ game }: Props) {
 			</NameContainer>
 			<GameLinks>
 				{game.links.website && (
-					<GameLink openInNewTab href={game.links.website}>
+					<ButtonLink openInNewTab href={game.links.website}>
 						Website
-					</GameLink>
+					</ButtonLink>
 				)}
 				{game.links.igdb && (
-					<GameLink openInNewTab href={game.links.igdb}>
+					<ButtonLink openInNewTab href={game.links.igdb}>
 						IGDB
-					</GameLink>
+					</ButtonLink>
 				)}
 				{game.links.steam && (
-					<GameLink openInNewTab href={game.links.steam}>
+					<ButtonLink openInNewTab href={game.links.steam}>
 						Steam
-					</GameLink>
+					</ButtonLink>
 				)}
 			</GameLinks>
 		</Container>

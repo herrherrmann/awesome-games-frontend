@@ -10,7 +10,7 @@ const A = styled.a<Props>(({ theme }) => ({
 	textDecoration: 'none',
 	'&:hover': {
 		color: theme.colors.primaryHighlight,
-		textDecoration: 'none',
+		textDecoration: 'underline',
 	},
 }));
 

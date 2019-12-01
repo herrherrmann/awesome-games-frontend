@@ -12,17 +12,9 @@ const Header = styled.header(({ theme }) => ({
 
 const HeaderInner = styled.div(({ theme }) => ({
 	display: 'flex',
-	justifyContent: 'space-between',
+	flexFlow: 'column',
 	maxWidth: theme.widths.maxContentWidth,
 	margin: '0 auto',
-	padding: theme.spacings.default,
-}));
-
-const HeaderLinks = styled.div(({ theme }) => ({
-	display: 'grid',
-	gridAutoFlow: 'column',
-	alignItems: 'start',
-	gridGap: theme.spacings.large,
 }));
 
 const HeaderLink = styled(Link)(({ theme }) => ({
@@ -33,32 +25,22 @@ const HeaderLink = styled(Link)(({ theme }) => ({
 	},
 }));
 
+const Subtitle = styled.small(({ theme }) => ({
+	color: theme.colors.lightGrey,
+	fontSize: theme.fontSizes.small,
+}));
+
 export default function AppHeader() {
 	return (
 		<Header>
 			<HeaderInner>
-				<div>
-					<HeaderLink href="/">
-						<span role="img" aria-label="Fire!">
-							🔥
-						</span>{' '}
-						Awesome Games
-					</HeaderLink>
-				</div>
-				<HeaderLinks>
-					<HeaderLink
-						href="https://github.com/herrherrmann/awesome-lan-party-games"
-						openInNewTab={true}
-					>
-						Source
-					</HeaderLink>
-					<HeaderLink
-						href="https://github.com/herrherrmann/awesome-games-frontend"
-						openInNewTab={true}
-					>
-						GitHub
-					</HeaderLink>
-				</HeaderLinks>
+				<HeaderLink href="/">
+					<span role="img" aria-label="Fire!">
+						🔥
+					</span>{' '}
+					Awesome Games
+				</HeaderLink>
+				<Subtitle>…for your couch session or LAN party.</Subtitle>
 			</HeaderInner>
 		</Header>
 	);
