@@ -32,37 +32,35 @@ export type Filters = {
 	search: string;
 };
 
-const initialParams: Filters = { search: '' };
+const EMPTY_FILTERS: Filters = { search: '' };
 
 export default function Games() {
 	const { data: games = [], isPending, error } = useAsync(loadGames);
-	const hookResult = useUrlSearchParams(initialParams, { search: String });
+	// Initialize with {} to avoid unneeded params upon initialization.
+	const hookResult = useUrlSearchParams({}, { search: String });
 	const urlParams = hookResult[0] as Filters;
-	const [search, setSearchState] = useState<string>(urlParams.search);
 	const setUrlParams = hookResult[1];
-	const setUrlParamsDebounced = debounce(
-		(params: Filters) => setUrlParams(params),
-		200,
-	);
-	const setSearch = useCallback(
-		(search: string) => {
-			setSearchState(search);
-			setUrlParamsDebounced({ search });
+	const setUrlParamsDebounced = debounce(setUrlParams, 200);
+	const [filters, setFiltersState] = useState<Filters>(urlParams);
+	const setFilters = useCallback(
+		(nextFilters: Filters) => {
+			setFiltersState(nextFilters);
+			setUrlParamsDebounced(nextFilters);
 		},
-		[setSearchState, setUrlParamsDebounced],
+		[setFiltersState, setUrlParamsDebounced],
 	);
 	const resetSearch = useCallback(
 		event => {
 			// Prevent link/navigation.
 			event.preventDefault();
-			setSearchState('');
-			setUrlParamsDebounced({ search: '' });
+			setFiltersState(EMPTY_FILTERS);
+			setUrlParamsDebounced(EMPTY_FILTERS);
 		},
-		[setSearchState, setUrlParamsDebounced],
+		[setFiltersState, setUrlParamsDebounced],
 	);
-	const filteredGames = useMemo(() => filterGames(games, { search }), [
+	const filteredGames = useMemo(() => filterGames(games, filters), [
 		games,
-		search,
+		filters,
 	]);
 	if (isPending) {
 		return (
@@ -78,8 +76,8 @@ export default function Games() {
 		<LayoutContainer>
 			<FiltersContainer>
 				<Filters
-					filters={{ search }}
-					setFilters={({ search }) => setSearch(search)}
+					filters={filters}
+					setFilters={setFilters}
 					resultLength={filteredGames.length}
 				/>
 			</FiltersContainer>

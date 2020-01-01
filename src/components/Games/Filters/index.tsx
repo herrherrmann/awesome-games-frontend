@@ -1,8 +1,8 @@
-import styled from '../../common/theme';
 import React from 'react';
-import Input from '../Input';
+import { Filters as FiltersType } from '..';
+import styled from '../../../common/theme';
+import Input from '../../Input';
 import ResultsCount from './ResultsCount';
-import { Filters as FiltersType } from '.';
 
 type Props = {
 	filters: FiltersType;
@@ -26,7 +26,7 @@ export default function Filters({ filters, setFilters, resultLength }: Props) {
 		<>
 			<Filter>
 				<Input
-					value={filters.search}
+					value={filters.search || ''}
 					onChange={event =>
 						setFilters({ ...filters, search: event.target.value })
 					}
