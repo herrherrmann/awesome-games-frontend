@@ -1,4 +1,5 @@
 import React from 'react';
+import { IoLogoGameControllerB } from 'react-icons/io';
 import styled from '../common/theme';
 import Link from './Link';
 
@@ -14,15 +15,32 @@ const Header = styled.header(({ theme }) => ({
 
 const HeaderInner = styled.div(({ theme }) => ({
 	display: 'flex',
-	flexFlow: 'column',
 	maxWidth: theme.widths.maxContentWidth,
 	padding: `0 ${theme.spacings.default}`,
 	margin: '0 auto',
 }));
 
+const LOGO_SIZE = '36px';
+
+const LogoLink = styled(Link)(({ theme }) => ({
+	color: theme.colors.lightGrey,
+	'&:hover, &:focus': {
+		color: theme.colors.lightGrey,
+	},
+	width: LOGO_SIZE,
+	height: LOGO_SIZE,
+	fontSize: LOGO_SIZE,
+	marginRight: theme.spacings.default,
+}));
+
+const TextBlock = styled.div`
+	display: flex;
+	flex-flow: column;
+`;
+
 const HeaderLink = styled(Link)(({ theme }) => ({
 	color: theme.colors.lightGrey,
-	'&:hover': {
+	'&:hover, &:focus': {
 		color: theme.colors.lightGrey,
 		textDecoration: 'underline',
 	},
@@ -36,13 +54,13 @@ export default function AppHeader() {
 	return (
 		<Header>
 			<HeaderInner>
-				<HeaderLink href="/">
-					<span role="img" aria-label="Fire!">
-						🔥
-					</span>{' '}
-					Awesome Games
-				</HeaderLink>
-				<Subtitle>…for your couch session or LAN party.</Subtitle>
+				<LogoLink href="/">
+					<IoLogoGameControllerB />
+				</LogoLink>
+				<TextBlock>
+					<HeaderLink href="/">Awesome Games</HeaderLink>
+					<Subtitle>…for your couch session or LAN party.</Subtitle>
+				</TextBlock>
 			</HeaderInner>
 		</Header>
 	);
