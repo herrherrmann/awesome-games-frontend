@@ -32,20 +32,16 @@ export type Filters = {
 	search: string;
 };
 
-type SearchParams = {
-	search: string;
-};
-
-const initialParams: SearchParams = { search: '' };
+const initialParams: Filters = { search: '' };
 
 export default function Games() {
 	const { data: games = [], isPending, error } = useAsync(loadGames);
 	const hookResult = useUrlSearchParams(initialParams, { search: String });
-	const urlParams = hookResult[0] as SearchParams;
+	const urlParams = hookResult[0] as Filters;
 	const [search, setSearchState] = useState<string>(urlParams.search);
 	const setUrlParams = hookResult[1];
 	const setUrlParamsDebounced = debounce(
-		(params: SearchParams) => setUrlParams(params),
+		(params: Filters) => setUrlParams(params),
 		200,
 	);
 	const setSearch = useCallback(

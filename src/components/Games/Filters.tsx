@@ -10,14 +10,21 @@ type Props = {
 	resultLength: number;
 };
 
-const SearchBox = styled.div(({ theme }) => ({
+const Filter = styled.div(({ theme }) => ({
 	marginBottom: theme.spacings.large,
+}));
+
+const Divider = styled.hr(({ theme }) => ({
+	borderTop: `1px solid ${theme.colors.lightGrey}`,
+	borderRight: `none`,
+	borderBottom: `none`,
+	borderLeft: `none`,
 }));
 
 export default function Filters({ filters, setFilters, resultLength }: Props) {
 	return (
 		<>
-			<SearchBox>
+			<Filter>
 				<Input
 					value={filters.search}
 					onChange={event =>
@@ -25,7 +32,8 @@ export default function Filters({ filters, setFilters, resultLength }: Props) {
 					}
 					placeholder="Search…"
 				/>
-			</SearchBox>
+			</Filter>
+			<Divider />
 			<ResultsCount count={resultLength} />
 		</>
 	);
