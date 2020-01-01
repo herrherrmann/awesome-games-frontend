@@ -63,7 +63,7 @@ export default function GameList({ games }: Props) {
 				<Input
 					value={search}
 					onChange={setSearch}
-					placeholder="🔍 Search for games…"
+					placeholder="Search…"
 				/>
 			</SearchBox>
 			<ResultsCount count={filteredGames.length} />
