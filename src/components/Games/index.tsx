@@ -1,10 +1,13 @@
-import React from 'react';
+import debounce from 'debounce';
+import React, { useCallback, useMemo, useState } from 'react';
 import { useAsync } from 'react-async';
+import { useUrlSearchParams } from 'use-url-search-params';
 import styled from '../../common/theme';
 import LoadingSpinner from '../LoadingSpinner';
+import Filters from './Filters';
 import GameList from './GameList';
 import LoadingError from './LoadingError';
-import { loadGames } from './service';
+import { filterGames, loadGames } from './service';
 
 const Loading = styled.div(({ theme }) => ({
 	padding: theme.spacings.default,
@@ -12,8 +15,59 @@ const Loading = styled.div(({ theme }) => ({
 	textAlign: 'center',
 }));
 
+const LayoutContainer = styled.div(({ theme }) => ({
+	display: 'flex',
+}));
+
+const FiltersContainer = styled.div(({ theme }) => ({
+	minWidth: '200px',
+	marginRight: theme.spacings.large,
+}));
+
+const GamesContainer = styled.div(({ theme }) => ({
+	// minWidth: '300px',
+}));
+
+export type Filters = {
+	search: string;
+};
+
+type SearchParams = {
+	search: string;
+};
+
+const initialParams: SearchParams = { search: '' };
+
 export default function Games() {
 	const { data: games = [], isPending, error } = useAsync(loadGames);
+	const hookResult = useUrlSearchParams(initialParams, { search: String });
+	const urlParams = hookResult[0] as SearchParams;
+	const [search, setSearchState] = useState<string>(urlParams.search);
+	const setUrlParams = hookResult[1];
+	const setUrlParamsDebounced = debounce(
+		(params: SearchParams) => setUrlParams(params),
+		200,
+	);
+	const setSearch = useCallback(
+		(search: string) => {
+			setSearchState(search);
+			setUrlParamsDebounced({ search });
+		},
+		[setSearchState, setUrlParamsDebounced],
+	);
+	const resetSearch = useCallback(
+		event => {
+			// Prevent link/navigation.
+			event.preventDefault();
+			setSearchState('');
+			setUrlParamsDebounced({ search: '' });
+		},
+		[setSearchState, setUrlParamsDebounced],
+	);
+	const filteredGames = useMemo(() => filterGames(games, { search }), [
+		games,
+		search,
+	]);
 	if (isPending) {
 		return (
 			<Loading>
@@ -24,5 +78,18 @@ export default function Games() {
 	if (error) {
 		return <LoadingError />;
 	}
-	return <GameList games={games} />;
+	return (
+		<LayoutContainer>
+			<FiltersContainer>
+				<Filters
+					filters={{ search }}
+					setFilters={({ search }) => setSearch(search)}
+					resultLength={filteredGames.length}
+				/>
+			</FiltersContainer>
+			<GamesContainer>
+				<GameList games={filteredGames} onResetSearch={resetSearch} />
+			</GamesContainer>
+		</LayoutContainer>
+	);
 }

@@ -1,82 +1,31 @@
-import debounce from 'debounce';
 import { map } from 'ramda';
-import React, { ChangeEvent, useCallback, useMemo, useState } from 'react';
-import { useUrlSearchParams } from 'use-url-search-params';
+import React, { MouseEventHandler } from 'react';
 import styled from '../../common/theme';
 import { Game as GameType } from '../../common/types';
-import Input from '../Input';
 import Link from '../Link';
 import Game from './Game';
-import ResultsCount from './ResultsCount';
-import { filterGames } from './service';
 
 type Props = {
 	games: GameType[];
+	onResetSearch: MouseEventHandler<HTMLAnchorElement>;
 };
-
-type SearchParams = {
-	search: string;
-};
-
-const SearchBox = styled.div(({ theme }) => ({
-	marginBottom: theme.spacings.large,
-}));
 
 const NoGamesFound = styled.div(({ theme }) => ({}));
 const ContributionHint = styled.small(({ theme }) => ({}));
 
-const initialParams: SearchParams = { search: '' };
-
-export default function GameList({ games }: Props) {
-	const hookResult = useUrlSearchParams(initialParams, { search: String });
-	const urlParams = hookResult[0] as SearchParams;
-	const [search, setSearchState] = useState<string>(urlParams.search);
-	const setUrlParams = hookResult[1];
-	const setUrlParamsDebounced = debounce(
-		(params: SearchParams) => setUrlParams(params),
-		200,
-	);
-	const setSearch = useCallback(
-		(event: ChangeEvent<HTMLInputElement>) => {
-			const searchTerm = event.target.value;
-			setSearchState(searchTerm);
-			setUrlParamsDebounced({ search: searchTerm });
-		},
-		[setSearchState, setUrlParamsDebounced],
-	);
-	const resetSearch = useCallback(
-		event => {
-			// Prevent link/navigation.
-			event.preventDefault();
-			setSearchState('');
-			setUrlParamsDebounced({ search: '' });
-		},
-		[setSearchState, setUrlParamsDebounced],
-	);
-	const filteredGames = useMemo(() => filterGames(games, { search }), [
-		games,
-		search,
-	]);
+export default function GameList({ games, onResetSearch }: Props) {
 	return (
 		<>
-			<SearchBox>
-				<Input
-					value={search}
-					onChange={setSearch}
-					placeholder="Search…"
-				/>
-			</SearchBox>
-			<ResultsCount count={filteredGames.length} />
 			{map(
 				game => (
 					<Game key={game.id} game={game} />
 				),
-				filteredGames,
+				games,
 			)}
-			{!filteredGames.length && (
+			{!games.length && (
 				<NoGamesFound>
 					Sorry, there are no games matching your current search. Try{' '}
-					<Link href="/" onClick={resetSearch}>
+					<Link href="/" onClick={onResetSearch}>
 						resetting the search
 					</Link>
 					.
