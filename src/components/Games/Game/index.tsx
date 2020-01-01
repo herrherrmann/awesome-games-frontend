@@ -119,22 +119,22 @@ const ButtonLink = styled(Link)(({ theme }) => ({
 }));
 
 export default function Game({ game }: Props) {
-	const hasWebsiteLink = !!game.links.website;
+	const link = game.links.website || game.links.igdb;
 	const handleClick = useCallback(() => {
-		if (hasWebsiteLink) {
-			window.open(game.links.website, '_blank');
+		if (!!link) {
+			window.open(link, '_blank');
 		}
-	}, [hasWebsiteLink, game]);
+	}, [link]);
 	const preventBubbling = useCallback(event => {
 		event.stopPropagation();
 	}, []);
 	return (
 		<GameCard
 			onClick={handleClick}
-			hasLink={hasWebsiteLink}
-			tabIndex={hasWebsiteLink ? 0 : undefined}
-			role={hasWebsiteLink ? 'link' : undefined}
-			aria-label={hasWebsiteLink ? `${game.name}'s website` : undefined}
+			hasLink={!!link}
+			tabIndex={link ? 0 : undefined}
+			role={link ? 'link' : undefined}
+			aria-label={link ? `${game.name}'s website` : undefined}
 		>
 			<NameContainer>
 				<CoverContainer>
