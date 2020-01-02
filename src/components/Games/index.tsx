@@ -7,7 +7,7 @@ import LoadingSpinner from '../LoadingSpinner';
 import Filters from './Filters';
 import GameList from './GameList';
 import LoadingError from './LoadingError';
-import { filterGames, loadGames } from './service';
+import { filterGames, loadGames, getGenres } from './service';
 
 const Loading = styled.div(({ theme }) => ({
 	padding: theme.spacings.default,
@@ -62,6 +62,7 @@ export default function Games() {
 		games,
 		filters,
 	]);
+	const genres = useMemo(() => getGenres(games), [games]);
 	if (isPending) {
 		return (
 			<Loading>
@@ -78,6 +79,7 @@ export default function Games() {
 				<Filters
 					filters={filters}
 					setFilters={setFilters}
+					genres={genres}
 					resultLength={filteredGames.length}
 				/>
 			</FiltersContainer>

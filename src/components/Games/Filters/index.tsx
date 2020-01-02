@@ -7,6 +7,7 @@ import ResultsCount from './ResultsCount';
 type Props = {
 	filters: FiltersType;
 	setFilters(filters: FiltersType): void;
+	genres: string[];
 	resultLength: number;
 };
 
@@ -21,7 +22,12 @@ const Divider = styled.hr(({ theme }) => ({
 	borderLeft: `none`,
 }));
 
-export default function Filters({ filters, setFilters, resultLength }: Props) {
+export default function Filters({
+	filters,
+	setFilters,
+	genres,
+	resultLength,
+}: Props) {
 	return (
 		<>
 			<Filter>
