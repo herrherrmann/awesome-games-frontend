@@ -1,4 +1,15 @@
-import { ascend, compose, flatten, identity, map, sortWith, uniq } from 'ramda';
+import {
+	all,
+	ascend,
+	compose,
+	flatten,
+	identity,
+	intersection,
+	map,
+	sortWith,
+	toPairs,
+	uniq,
+} from 'ramda';
 import { Filters } from '.';
 import api from '../../common/api';
 import { Game } from '../../common/types';
@@ -8,12 +19,25 @@ export function loadGames(): Promise<Game[]> {
 }
 
 export function filterGames(games: Game[], filters: Filters): Game[] {
+	const allowedGenres = getAllowedGenres(filters.genres);
 	return games.filter(game => {
-		return filters.search
-			? game.name.toLowerCase().includes(filters.search.toLowerCase())
-			: true;
+		return all(Boolean, [
+			allowedGenres.length
+				? intersection(game.genres, allowedGenres).length > 0
+				: true,
+			filters.search
+				? game.name.toLowerCase().includes(filters.search.toLowerCase())
+				: true,
+		]);
 	});
 }
+
+function getAllowedGenres(genres: { [genre: string]: boolean }): string[] {
+	return toPairs(genres)
+		.filter(([, isEnabled]) => isEnabled)
+		.map(([genre]) => genre);
+}
+
 export function getGenres(games: Game[]): string[] {
 	return compose<Game[], string[][], string[], string[], string[]>(
 		sortWith([ascend(identity)]),

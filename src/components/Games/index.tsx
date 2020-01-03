@@ -1,19 +1,11 @@
-import debounce from 'debounce';
 import React, { useCallback, useMemo, useState } from 'react';
 import { useAsync } from 'react-async';
-import { useUrlSearchParams } from 'use-url-search-params';
 import styled from '../../common/theme';
-import LoadingSpinner from '../LoadingSpinner';
 import Filters from './Filters';
 import GameList from './GameList';
 import LoadingError from './LoadingError';
-import { filterGames, loadGames, getGenres } from './service';
-
-const Loading = styled.div(({ theme }) => ({
-	padding: theme.spacings.default,
-	fontSize: theme.fontSizes.large,
-	textAlign: 'center',
-}));
+import LoadingPending from './LoadingPending';
+import { filterGames, getGenres, loadGames } from './service';
 
 const LayoutContainer = styled.div(({ theme }) => ({
 	display: 'flex',
@@ -30,33 +22,21 @@ const GamesContainer = styled.div(({ theme }) => ({
 
 export type Filters = {
 	search: string;
+	genres: { [genre: string]: boolean };
 };
 
-const EMPTY_FILTERS: Filters = { search: '' };
+const EMPTY_FILTERS: Filters = { search: '', genres: {} };
 
 export default function Games() {
 	const { data: games = [], isPending, error } = useAsync(loadGames);
-	// Initialize with {} to avoid unneeded params upon initialization.
-	const hookResult = useUrlSearchParams({}, { search: String });
-	const urlParams = hookResult[0] as Filters;
-	const setUrlParams = hookResult[1];
-	const setUrlParamsDebounced = debounce(setUrlParams, 200);
-	const [filters, setFiltersState] = useState<Filters>(urlParams);
-	const setFilters = useCallback(
-		(nextFilters: Filters) => {
-			setFiltersState(nextFilters);
-			setUrlParamsDebounced(nextFilters);
-		},
-		[setFiltersState, setUrlParamsDebounced],
-	);
+	const [filters, setFilters] = useState<Filters>(EMPTY_FILTERS);
 	const resetSearch = useCallback(
 		event => {
 			// Prevent link/navigation.
 			event.preventDefault();
-			setFiltersState(EMPTY_FILTERS);
-			setUrlParamsDebounced(EMPTY_FILTERS);
+			setFilters(EMPTY_FILTERS);
 		},
-		[setFiltersState, setUrlParamsDebounced],
+		[setFilters],
 	);
 	const filteredGames = useMemo(() => filterGames(games, filters), [
 		games,
@@ -64,11 +44,7 @@ export default function Games() {
 	]);
 	const genres = useMemo(() => getGenres(games), [games]);
 	if (isPending) {
-		return (
-			<Loading>
-				<LoadingSpinner /> Loading games…
-			</Loading>
-		);
+		return <LoadingPending />;
 	}
 	if (error) {
 		return <LoadingError />;

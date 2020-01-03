@@ -6,6 +6,7 @@ type Props = {
 };
 
 const Content = styled.small(({ theme }) => ({
+	fontSize: theme.fontSizes.small,
 	color: theme.colors.grey,
 }));
 
