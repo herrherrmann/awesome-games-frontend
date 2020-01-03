@@ -58,7 +58,7 @@ export default function Games() {
 			<FiltersContainer>
 				<Filters
 					filters={filters}
-					setFilters={setFilters}
+					onSetFilters={setFilters}
 					genres={genres}
 					resultLength={filteredGames.length}
 				/>

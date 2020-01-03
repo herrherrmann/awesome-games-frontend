@@ -9,7 +9,7 @@ import ResultsCount from './ResultsCount';
 
 type Props = {
 	filters: FiltersType;
-	setFilters(filters: FiltersType): void;
+	onSetFilters(filters: FiltersType): void;
 	genres: string[];
 	resultLength: number;
 };
@@ -37,7 +37,7 @@ const Legend = Header.withComponent('legend');
 
 export default function Filters({
 	filters,
-	setFilters,
+	onSetFilters,
 	genres,
 	resultLength,
 }: Props) {
@@ -47,7 +47,7 @@ export default function Filters({
 				<Input
 					value={filters.search || ''}
 					onChange={event =>
-						setFilters({ ...filters, search: event.target.value })
+						onSetFilters({ ...filters, search: event.target.value })
 					}
 					placeholder="Search…"
 					aria-label="Search for games"
@@ -62,7 +62,7 @@ export default function Filters({
 							type="checkbox"
 							checked={filters.freeOnly}
 							onChange={event =>
-								setFilters({
+								onSetFilters({
 									...filters,
 									freeOnly: event.target.checked,
 								})
@@ -78,7 +78,7 @@ export default function Filters({
 					<Legend>Genres</Legend>
 					<GenreFilters
 						filters={filters}
-						onSetFilters={setFilters}
+						onSetFilters={onSetFilters}
 						genres={genres}
 					/>
 				</Fieldset>
