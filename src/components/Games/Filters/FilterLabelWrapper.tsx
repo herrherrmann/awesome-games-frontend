@@ -1,7 +1,6 @@
 import styled from '../../../common/theme';
 
-const FilterLabel = styled.label(({ theme }) => ({
-	display: 'block',
+const FilterLabelWrapper = styled.div(({ theme }) => ({
 	marginTop: 0,
 	marginBottom: theme.spacings.default,
 	overflow: 'hidden',
@@ -9,4 +8,4 @@ const FilterLabel = styled.label(({ theme }) => ({
 	whiteSpace: 'nowrap',
 }));
 
-export default FilterLabel;
+export default FilterLabelWrapper;

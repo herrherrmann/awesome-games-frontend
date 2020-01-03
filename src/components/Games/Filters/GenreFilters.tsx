@@ -1,6 +1,6 @@
 import React, { ChangeEvent, useCallback } from 'react';
 import { Filters } from '..';
-import FilterLabel from './FilterLabel';
+import FilterLabelWrapper from './FilterLabelWrapper';
 
 type Props = {
 	filters: Filters;
@@ -21,15 +21,17 @@ export default function GenreFilters({ filters, onSetFilters, genres }: Props) {
 	return (
 		<>
 			{genres.map(genre => (
-				<FilterLabel key={genre}>
-					<input
-						name={`genre-${genre}`}
-						type="checkbox"
-						checked={!!filters.genres[genre]}
-						onChange={event => handleChange(genre, event)}
-					/>
-					{genre}
-				</FilterLabel>
+				<FilterLabelWrapper key={genre}>
+					<label>
+						<input
+							name={`genre-${genre}`}
+							type="checkbox"
+							checked={!!filters.genres[genre]}
+							onChange={event => handleChange(genre, event)}
+						/>
+						{genre}
+					</label>
+				</FilterLabelWrapper>
 			))}
 		</>
 	);

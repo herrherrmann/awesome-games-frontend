@@ -9,16 +9,18 @@ import { filterGames, getGenres, loadGames } from './service';
 
 const LayoutContainer = styled.div(({ theme }) => ({
 	display: 'flex',
+	flexWrap: 'wrap',
 }));
 
 const FiltersContainer = styled.div(({ theme }) => ({
 	flex: '0 1',
-	minWidth: '200px',
-	marginRight: theme.spacings.large,
+	maxWidth: '220px',
+	marginRight: theme.spacings.huge,
+	marginBottom: theme.spacings.large,
 }));
 
 const GamesContainer = styled.div(({ theme }) => ({
-	flex: '1 0',
+	flex: '1 1',
 }));
 
 export type Filters = {
@@ -32,7 +34,7 @@ const EMPTY_FILTERS: Filters = { search: '', genres: {}, freeOnly: false };
 export default function Games() {
 	const { data: games = [], isPending, error } = useAsync(loadGames);
 	const [filters, setFilters] = useState<Filters>(EMPTY_FILTERS);
-	const resetSearch = useCallback(
+	const resetFilters = useCallback(
 		event => {
 			// Prevent link/navigation.
 			event.preventDefault();
@@ -62,7 +64,7 @@ export default function Games() {
 				/>
 			</FiltersContainer>
 			<GamesContainer>
-				<GameList games={filteredGames} onResetSearch={resetSearch} />
+				<GameList games={filteredGames} onResetFilters={resetFilters} />
 			</GamesContainer>
 		</LayoutContainer>
 	);

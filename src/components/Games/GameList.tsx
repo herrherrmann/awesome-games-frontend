@@ -7,13 +7,13 @@ import Game from './Game';
 
 type Props = {
 	games: GameType[];
-	onResetSearch: MouseEventHandler<HTMLAnchorElement>;
+	onResetFilters: MouseEventHandler<HTMLAnchorElement>;
 };
 
 const NoGamesFound = styled.div(({ theme }) => ({}));
 const ContributionHint = styled.small(({ theme }) => ({}));
 
-export default function GameList({ games, onResetSearch }: Props) {
+export default function GameList({ games, onResetFilters }: Props) {
 	return (
 		<>
 			{map(
@@ -24,9 +24,9 @@ export default function GameList({ games, onResetSearch }: Props) {
 			)}
 			{!games.length && (
 				<NoGamesFound>
-					Sorry, there are no games matching your current search. Try{' '}
-					<Link href="/" onClick={onResetSearch}>
-						resetting the search
+					Sorry, there are no games matching your current filters. Try{' '}
+					<Link href="/" onClick={onResetFilters}>
+						resetting the filters
 					</Link>
 					.
 					<br />

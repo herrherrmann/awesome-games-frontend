@@ -1,10 +1,11 @@
 import React from 'react';
 import { Filters as FiltersType } from '..';
 import styled from '../../../common/theme';
+import Fieldset from '../../Fieldset';
 import Input from '../../Input';
+import FilterLabelWrapper from './FilterLabelWrapper';
 import GenreFilters from './GenreFilters';
 import ResultsCount from './ResultsCount';
-import FilterLabel from './FilterLabel';
 
 type Props = {
 	filters: FiltersType;
@@ -32,6 +33,8 @@ const Header = styled.h3(({ theme }) => ({
 	color: theme.colors.grey,
 }));
 
+const Legend = Header.withComponent('legend');
+
 export default function Filters({
 	filters,
 	setFilters,
@@ -47,33 +50,38 @@ export default function Filters({
 						setFilters({ ...filters, search: event.target.value })
 					}
 					placeholder="Search…"
+					aria-label="Search for games"
 				/>
 			</FilterGroup>
 			<Divider />
 			<FilterGroup>
-				<FilterLabel>
-					<input
-						name="free"
-						type="checkbox"
-						checked={filters.freeOnly}
-						onChange={event =>
-							setFilters({
-								...filters,
-								freeOnly: event.target.checked,
-							})
-						}
+				<FilterLabelWrapper>
+					<label>
+						<input
+							name="free"
+							type="checkbox"
+							checked={filters.freeOnly}
+							onChange={event =>
+								setFilters({
+									...filters,
+									freeOnly: event.target.checked,
+								})
+							}
+						/>
+						Only free games
+					</label>
+				</FilterLabelWrapper>
+			</FilterGroup>
+			<Divider />
+			<FilterGroup>
+				<Fieldset>
+					<Legend>Genres</Legend>
+					<GenreFilters
+						filters={filters}
+						onSetFilters={setFilters}
+						genres={genres}
 					/>
-					Only Free Games
-				</FilterLabel>
-			</FilterGroup>
-			<Divider />
-			<FilterGroup>
-				<Header>Genres</Header>
-				<GenreFilters
-					filters={filters}
-					onSetFilters={setFilters}
-					genres={genres}
-				/>
+				</Fieldset>
 			</FilterGroup>
 			<Divider />
 			<ResultsCount count={resultLength} />
