@@ -16,7 +16,6 @@ const Header = styled.header(({ theme }) => ({
 const HeaderInner = styled.div(({ theme }) => ({
 	display: 'flex',
 	maxWidth: theme.widths.maxContentWidth,
-	padding: `0 ${theme.spacings.default}`,
 	margin: '0 auto',
 }));
 

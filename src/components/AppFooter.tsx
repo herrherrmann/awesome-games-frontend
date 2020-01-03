@@ -15,7 +15,6 @@ const FooterInner = styled.div(({ theme }) => ({
 	flexFlow: 'row wrap',
 	width: '100%',
 	maxWidth: theme.widths.maxContentWidth,
-	padding: `0 ${theme.spacings.default}`,
 	margin: '0 auto',
 	fontSize: theme.fontSizes.small,
 }));
