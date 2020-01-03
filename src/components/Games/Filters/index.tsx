@@ -43,12 +43,13 @@ export default function Filters({
 }: Props) {
 	return (
 		<>
-			<FilterGroup>
+			<FilterGroup role="search">
 				<Input
 					value={filters.search || ''}
 					onChange={event =>
 						onSetFilters({ ...filters, search: event.target.value })
 					}
+					type="search"
 					placeholder="Search…"
 					aria-label="Search for games"
 				/>
