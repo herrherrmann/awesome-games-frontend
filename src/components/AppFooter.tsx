@@ -4,7 +4,7 @@ import Link from './Link';
 
 const Footer = styled.footer(({ theme }) => ({
 	backgroundColor: theme.colors.lightGrey,
-	padding: theme.spacings.large,
+	padding: `${theme.spacings.large} 0`,
 	fontSize: theme.fontSizes.small,
 	boxShadow: `inset 0px 3px 5px -3px rgba(0, 0, 0, 0.25)`,
 }));
@@ -16,6 +16,7 @@ const FooterInner = styled.div(({ theme }) => ({
 	width: '100%',
 	maxWidth: theme.widths.maxContentWidth,
 	margin: '0 auto',
+	padding: `0 ${theme.spacings.default}`,
 	fontSize: theme.fontSizes.small,
 }));
 

@@ -8,15 +8,19 @@ import LoadingPending from './LoadingPending';
 import { filterGames, getGenres, loadGames } from './service';
 
 const LayoutContainer = styled.div(({ theme }) => ({
-	display: 'flex',
-	flexWrap: 'wrap',
+	[`@media (min-width: ${theme.widths.smallScreen})`]: {
+		display: 'flex',
+		flexWrap: 'wrap',
+	},
 }));
 
 const FiltersContainer = styled.div(({ theme }) => ({
 	flex: '0 1',
-	maxWidth: '220px',
-	marginRight: theme.spacings.huge,
 	marginBottom: theme.spacings.large,
+	[`@media (min-width: ${theme.widths.smallScreen})`]: {
+		maxWidth: '220px',
+		marginRight: theme.spacings.huge,
+	},
 }));
 
 const GamesContainer = styled.div(({ theme }) => ({

@@ -24,6 +24,7 @@ export type Theme = {
 		borderRadius: string;
 	};
 	widths: {
+		smallScreen: string;
 		maxContentWidth: string;
 	};
 	fontSizes: {
@@ -59,6 +60,7 @@ const fontWeights = {
 };
 
 const widths = {
+	smallScreen: '600px',
 	maxContentWidth: '800px',
 };
 

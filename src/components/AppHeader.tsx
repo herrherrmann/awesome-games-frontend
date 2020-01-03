@@ -6,7 +6,7 @@ import Link from './Link';
 const Header = styled.header(({ theme }) => ({
 	backgroundColor: theme.colors.primary,
 	color: theme.colors.lightGrey,
-	padding: theme.spacings.large,
+	padding: `${theme.spacings.large} 0`,
 	marginBottom: theme.spacings.default,
 	fontSize: theme.fontSizes.large,
 	fontWeight: theme.fontWeights.bold,
@@ -17,6 +17,7 @@ const HeaderInner = styled.div(({ theme }) => ({
 	display: 'flex',
 	maxWidth: theme.widths.maxContentWidth,
 	margin: '0 auto',
+	padding: `0 ${theme.spacings.default}`,
 }));
 
 const LOGO_SIZE = '36px';
