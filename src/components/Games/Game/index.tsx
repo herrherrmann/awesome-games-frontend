@@ -14,7 +14,9 @@ type GameCardProps = {
 const GameCard = styled.div<GameCardProps>(({ hasLink, theme }) => ({
 	backgroundColor: theme.colors.cardBackground,
 	display: 'flex',
-	flexWrap: 'wrap',
+	[`@media (max-width: ${theme.widths.smallScreen})`]: {
+		flexWrap: 'wrap',
+	},
 	justifyContent: 'space-between',
 	padding: theme.spacings.default,
 	marginBottom: theme.spacings.default,
@@ -96,7 +98,7 @@ const FreeBadge = styled(Pillbox)(({ theme }) => ({
 const GameLinks = styled.div(({ theme }) => ({
 	display: 'flex',
 	alignItems: 'center',
-	minWidth: '150px',
+	minWidth: '130px',
 }));
 
 const ButtonLink = styled(Link)(({ theme }) => ({
