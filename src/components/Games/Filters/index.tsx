@@ -4,6 +4,7 @@ import styled from '../../../common/theme';
 import Input from '../../Input';
 import GenreFilters from './GenreFilters';
 import ResultsCount from './ResultsCount';
+import FilterLabel from './FilterLabel';
 
 type Props = {
 	filters: FiltersType;
@@ -12,7 +13,7 @@ type Props = {
 	resultLength: number;
 };
 
-const Filter = styled.div(({ theme }) => ({
+const FilterGroup = styled.div(({ theme }) => ({
 	marginBottom: theme.spacings.large,
 }));
 
@@ -39,7 +40,7 @@ export default function Filters({
 }: Props) {
 	return (
 		<>
-			<Filter>
+			<FilterGroup>
 				<Input
 					value={filters.search || ''}
 					onChange={event =>
@@ -47,16 +48,33 @@ export default function Filters({
 					}
 					placeholder="Search…"
 				/>
-			</Filter>
+			</FilterGroup>
 			<Divider />
-			<Filter>
+			<FilterGroup>
+				<FilterLabel>
+					<input
+						name="free"
+						type="checkbox"
+						checked={filters.freeOnly}
+						onChange={event =>
+							setFilters({
+								...filters,
+								freeOnly: event.target.checked,
+							})
+						}
+					/>
+					Only Free Games
+				</FilterLabel>
+			</FilterGroup>
+			<Divider />
+			<FilterGroup>
 				<Header>Genres</Header>
 				<GenreFilters
 					filters={filters}
 					onSetFilters={setFilters}
 					genres={genres}
 				/>
-			</Filter>
+			</FilterGroup>
 			<Divider />
 			<ResultsCount count={resultLength} />
 		</>

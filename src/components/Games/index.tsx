@@ -12,20 +12,22 @@ const LayoutContainer = styled.div(({ theme }) => ({
 }));
 
 const FiltersContainer = styled.div(({ theme }) => ({
+	flex: '0 1',
 	minWidth: '200px',
 	marginRight: theme.spacings.large,
 }));
 
 const GamesContainer = styled.div(({ theme }) => ({
-	// minWidth: '300px',
+	flex: '1 0',
 }));
 
 export type Filters = {
 	search: string;
 	genres: { [genre: string]: boolean };
+	freeOnly: boolean;
 };
 
-const EMPTY_FILTERS: Filters = { search: '', genres: {} };
+const EMPTY_FILTERS: Filters = { search: '', genres: {}, freeOnly: false };
 
 export default function Games() {
 	const { data: games = [], isPending, error } = useAsync(loadGames);

@@ -22,11 +22,12 @@ export function filterGames(games: Game[], filters: Filters): Game[] {
 	const allowedGenres = getAllowedGenres(filters.genres);
 	return games.filter(game => {
 		return all(Boolean, [
-			allowedGenres.length
-				? intersection(game.genres, allowedGenres).length > 0
-				: true,
+			filters.freeOnly ? game.isFree : true,
 			filters.search
 				? game.name.toLowerCase().includes(filters.search.toLowerCase())
+				: true,
+			allowedGenres.length
+				? intersection(game.genres, allowedGenres).length > 0
 				: true,
 		]);
 	});
