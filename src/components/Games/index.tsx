@@ -38,14 +38,9 @@ const EMPTY_FILTERS: Filters = { search: '', genres: {}, freeOnly: false };
 export default function Games() {
 	const { data: games = [], isPending, error } = useAsync(loadGames);
 	const [filters, setFilters] = useState<Filters>(EMPTY_FILTERS);
-	const resetFilters = useCallback(
-		event => {
-			// Prevent link/navigation.
-			event.preventDefault();
-			setFilters(EMPTY_FILTERS);
-		},
-		[setFilters],
-	);
+	const resetFilters = useCallback(() => {
+		setFilters(EMPTY_FILTERS);
+	}, [setFilters]);
 	const filteredGames = useMemo(() => filterGames(games, filters), [
 		games,
 		filters,

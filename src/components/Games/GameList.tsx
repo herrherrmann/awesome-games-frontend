@@ -3,6 +3,7 @@ import React, { MouseEventHandler } from 'react';
 import styled from '../../common/theme';
 import { Game as GameType } from '../../common/types';
 import Link from '../Link';
+import LinkWithOnClick from '../LinkWithOnClick';
 import Game from './Game';
 
 type Props = {
@@ -25,9 +26,9 @@ export default function GameList({ games, onResetFilters }: Props) {
 			{!games.length && (
 				<NoGamesFound>
 					Sorry, there are no games matching your current filters. Try{' '}
-					<Link href="/" onClick={onResetFilters}>
+					<LinkWithOnClick onClick={onResetFilters}>
 						resetting the filters
-					</Link>
+					</LinkWithOnClick>
 					.
 					<br />
 					<ContributionHint>

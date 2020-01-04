@@ -1,8 +1,10 @@
 import React from 'react';
+import { IoMdArrowDropdown, IoMdArrowDropright } from 'react-icons/io';
 import { Filters as FiltersType } from '..';
 import styled from '../../../common/theme';
 import Fieldset from '../../Fieldset';
 import Input from '../../Input';
+import ExpandCollapse from './ExpandCollapse';
 import FilterLabelWrapper from './FilterLabelWrapper';
 import GenreFilters from './GenreFilters';
 import ResultsCount from './ResultsCount';
@@ -54,38 +56,53 @@ export default function Filters({
 					aria-label="Search for games"
 				/>
 			</FilterGroup>
-			<Divider />
-			<FilterGroup>
-				<FilterLabelWrapper>
-					<label>
-						<input
-							name="free"
-							type="checkbox"
-							checked={filters.freeOnly}
-							onChange={event =>
-								onSetFilters({
-									...filters,
-									freeOnly: event.target.checked,
-								})
-							}
+			<ExpandCollapse
+				expand={
+					<>
+						<IoMdArrowDropright /> More Filters
+					</>
+				}
+				collapse={
+					<>
+						<IoMdArrowDropdown /> More Filters
+					</>
+				}
+			>
+				<Divider />
+				<FilterGroup>
+					<FilterLabelWrapper>
+						<label>
+							<input
+								name="free"
+								type="checkbox"
+								checked={filters.freeOnly}
+								onChange={event =>
+									onSetFilters({
+										...filters,
+										freeOnly: event.target.checked,
+									})
+								}
+							/>
+							Only free games
+						</label>
+					</FilterLabelWrapper>
+				</FilterGroup>
+				<Divider />
+				<FilterGroup>
+					<Fieldset>
+						<Legend>Genres</Legend>
+						<GenreFilters
+							filters={filters}
+							onSetFilters={onSetFilters}
+							genres={genres}
 						/>
-						Only free games
-					</label>
-				</FilterLabelWrapper>
-			</FilterGroup>
+					</Fieldset>
+				</FilterGroup>
+			</ExpandCollapse>
 			<Divider />
-			<FilterGroup>
-				<Fieldset>
-					<Legend>Genres</Legend>
-					<GenreFilters
-						filters={filters}
-						onSetFilters={onSetFilters}
-						genres={genres}
-					/>
-				</Fieldset>
-			</FilterGroup>
-			<Divider />
-			<ResultsCount count={resultLength} />
+			<div>
+				<ResultsCount count={resultLength} />
+			</div>
 		</>
 	);
 }
