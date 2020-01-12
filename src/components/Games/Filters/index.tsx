@@ -22,7 +22,7 @@ const FilterGroup = styled.div(({ theme }) => ({
 
 const Divider = styled.hr(({ theme }) => ({
 	margin: `${theme.spacings.large} 0`,
-	borderTop: `1px solid ${theme.colors.lightGrey}`,
+	borderTop: `1px solid ${theme.colors.greyLight}`,
 	borderRight: `none`,
 	borderBottom: `none`,
 	borderLeft: `none`,
@@ -32,7 +32,7 @@ const Header = styled.h3(({ theme }) => ({
 	margin: `${theme.spacings.default} 0 ${theme.spacings.default} 0`,
 	fontSize: theme.fontSizes.default,
 	fontWeight: theme.fontWeights.bold,
-	color: theme.colors.grey,
+	color: theme.colors.greyDark,
 }));
 
 const Legend = Header.withComponent('legend');

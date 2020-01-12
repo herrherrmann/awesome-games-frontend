@@ -20,7 +20,7 @@ const GameCard = styled.div<GameCardProps>(({ hasLink, theme }) => ({
 	justifyContent: 'space-between',
 	padding: theme.spacings.default,
 	marginBottom: theme.spacings.default,
-	border: `1px solid ${theme.colors.lightGrey}`,
+	border: `1px solid ${theme.colors.greyLight}`,
 	borderRadius: theme.spacings.borderRadius,
 	'&:hover': hasLink
 		? {
@@ -52,7 +52,7 @@ const CoverContainer = styled.div<{ size?: string }>(
 		overflow: 'hidden',
 		marginRight: theme.spacings.default,
 		borderRadius: theme.spacings.borderRadius,
-		backgroundColor: theme.colors.lightGrey,
+		backgroundColor: theme.colors.greyLight,
 	}),
 );
 
@@ -88,11 +88,11 @@ const Pillbox = styled.small(({ theme }) => ({
 }));
 
 const Genre = styled(Pillbox)(({ theme }) => ({
-	backgroundColor: theme.colors.lightGrey,
+	backgroundColor: theme.colors.greyLight,
 }));
 
 const FreeBadge = styled(Pillbox)(({ theme }) => ({
-	backgroundColor: theme.colors.lightGreen,
+	backgroundColor: theme.colors.greenLight,
 }));
 
 const GameLinks = styled.div(({ theme }) => ({
@@ -103,7 +103,7 @@ const GameLinks = styled.div(({ theme }) => ({
 
 const ButtonLink = styled(Link)(({ theme }) => ({
 	color: theme.colors.text,
-	border: `1px solid ${theme.colors.lightGrey}`,
+	border: `1px solid ${theme.colors.greyLight}`,
 	borderRadius: theme.spacings.borderRadius,
 	padding: theme.spacings.default,
 	'& + &': {

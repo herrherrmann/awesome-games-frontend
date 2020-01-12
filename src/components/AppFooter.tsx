@@ -3,7 +3,7 @@ import styled from '../common/theme';
 import Link from './Link';
 
 const Footer = styled.footer(({ theme }) => ({
-	backgroundColor: theme.colors.lightGrey,
+	backgroundColor: theme.colors.greyLight,
 	padding: `${theme.spacings.large} 0`,
 	fontSize: theme.fontSizes.small,
 	boxShadow: `inset 0px 3px 5px -3px rgba(0, 0, 0, 0.25)`,

@@ -5,7 +5,7 @@ import Link from './Link';
 
 const Header = styled.header(({ theme }) => ({
 	backgroundColor: theme.colors.primary,
-	color: theme.colors.lightGrey,
+	color: theme.colors.background,
 	padding: `${theme.spacings.large} 0`,
 	marginBottom: theme.spacings.default,
 	fontSize: theme.fontSizes.large,
@@ -23,9 +23,9 @@ const HeaderInner = styled.div(({ theme }) => ({
 const LOGO_SIZE = '36px';
 
 const LogoLink = styled(Link)(({ theme }) => ({
-	color: theme.colors.lightGrey,
+	color: theme.colors.background,
 	'&:hover, &:focus': {
-		color: theme.colors.lightGrey,
+		color: theme.colors.background,
 	},
 	width: LOGO_SIZE,
 	height: LOGO_SIZE,
@@ -39,15 +39,15 @@ const TextBlock = styled.div`
 `;
 
 const HeaderLink = styled(Link)(({ theme }) => ({
-	color: theme.colors.lightGrey,
+	color: theme.colors.background,
 	'&:hover, &:focus': {
-		color: theme.colors.lightGrey,
+		color: theme.colors.background,
 		textDecoration: 'underline',
 	},
 }));
 
 const Subtitle = styled.small(({ theme }) => ({
-	color: theme.colors.lightGrey,
+	color: theme.colors.background,
 }));
 
 export default function AppHeader() {

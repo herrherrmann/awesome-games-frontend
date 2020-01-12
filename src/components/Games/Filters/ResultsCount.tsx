@@ -7,7 +7,7 @@ type Props = {
 
 const Content = styled.small(({ theme }) => ({
 	fontSize: theme.fontSizes.small,
-	color: theme.colors.grey,
+	color: theme.colors.greyDark,
 }));
 
 export default function ResultsCount({ count }: Props) {

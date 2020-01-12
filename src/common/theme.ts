@@ -8,8 +8,9 @@ export type Theme = {
 		cardBackground: string;
 		text: string;
 		grey: string;
-		lightGrey: string;
-		lightGreen: string;
+		greyLight: string;
+		greyDark: string;
+		greenLight: string;
 		primary: string;
 		primaryDark: string;
 		primaryLight: string;
@@ -64,20 +65,22 @@ const widths = {
 	maxContentWidth: '800px',
 };
 
+// Palette: https://flatuicolors.com/palette/defo
 const themes: Record<ColorScheme, Theme> = {
 	light: {
 		colors: {
-			background: '#f9f9f9',
+			background: '#ecf0f1',
 			cardBackground: '#ffffff',
 			text: '#333333',
 			grey: '#ccc7cb',
-			lightGrey: '#e5e0e4',
-			lightGreen: '#a4e500',
-			primary: '#00a4e5',
-			primaryDark: '#008ac1',
+			greyLight: '#e3e6ea',
+			greyDark: '#7f8c8d',
+			greenLight: '#a4e500',
+			primary: '#3498db',
+			primaryDark: '#2980b9',
 			primaryLight: '#b0e6fc',
 			secondary: '#81f4e1',
-			error: '#e500a4',
+			error: '#e74c3c',
 		},
 		spacings,
 		fontSizes,
@@ -91,8 +94,9 @@ const themes: Record<ColorScheme, Theme> = {
 			cardBackground: '#ffffff',
 			text: '#333333',
 			grey: '#ccc7cb',
-			lightGrey: '#d3c4d1',
-			lightGreen: '#a4e500',
+			greyLight: '#d3c4d1',
+			greyDark: '#7f8c8d',
+			greenLight: '#a4e500',
 			primary: '#56cbf9',
 			primaryDark: '#009bd8',
 			primaryLight: '#b0e6fc',

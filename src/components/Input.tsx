@@ -6,7 +6,7 @@ type Props = InputHTMLAttributes<HTMLInputElement> & {};
 const InputElement = styled.input<Props>(({ theme }) => ({
 	width: '100%',
 	padding: `${theme.spacings.default} ${theme.spacings.default}`,
-	border: `1px solid ${theme.colors.lightGrey}`,
+	border: `1px solid ${theme.colors.greyLight}`,
 	borderRadius: theme.spacings.borderRadius,
 	color: theme.colors.text,
 	fontSize: theme.fontSizes.default,
