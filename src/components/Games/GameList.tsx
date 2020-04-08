@@ -11,37 +11,33 @@ type Props = {
 	onResetFilters: MouseEventHandler<HTMLAnchorElement>;
 };
 
-const NoGamesFound = styled.div(({ theme }) => ({}));
-const ContributionHint = styled.small(({ theme }) => ({}));
+const NoGamesFound = styled.p(({ theme }) => ({ margin: 0 }));
 
 export default function GameList({ games, onResetFilters }: Props) {
 	return (
 		<>
 			{map(
-				game => (
+				(game) => (
 					<Game key={game.id} game={game} />
 				),
 				games,
 			)}
 			{!games.length && (
-				<NoGamesFound>
-					Sorry, there are no games matching your current filters. Try{' '}
-					<LinkWithOnClick onClick={onResetFilters}>
-						resetting the filters
-					</LinkWithOnClick>
-					.
-					<br />
-					<ContributionHint>
-						And if you think a game is missing, please consider{' '}
+				<div>
+					<NoGamesFound>No games match your filters.</NoGamesFound>
+					<small>
+						<LinkWithOnClick onClick={onResetFilters}>
+							Reset Filters
+						</LinkWithOnClick>{' '}
+						|{' '}
 						<Link
 							href="https://github.com/herrherrmann/awesome-lan-party-games"
 							openInNewTab
 						>
-							contributing
+							Add a missing game
 						</Link>
-						!
-					</ContributionHint>
-				</NoGamesFound>
+					</small>
+				</div>
 			)}
 		</>
 	);
