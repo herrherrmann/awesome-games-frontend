@@ -2,6 +2,7 @@ import React from 'react';
 import { IoMdArrowDropdown, IoMdArrowDropright } from 'react-icons/io';
 import { Filters as FiltersType } from '..';
 import styled from '../../../common/theme';
+import Checkbox from '../../Checkbox';
 import Fieldset from '../../Fieldset';
 import ExpandCollapse from './ExpandCollapse';
 import FilterLabelWrapper from './FilterLabelWrapper';
@@ -30,6 +31,7 @@ const Divider = styled.hr(({ theme }) => ({
 
 const Header = styled.h3(({ theme }) => ({
 	margin: `${theme.spacings.default} 0 ${theme.spacings.default} 0`,
+	padding: 0,
 	fontSize: theme.fontSizes.default,
 	fontWeight: theme.fontWeights.bold,
 	color: theme.colors.greyDark,
@@ -68,20 +70,18 @@ export default function Filters({
 				<Divider />
 				<FilterGroup>
 					<FilterLabelWrapper>
-						<label>
-							<input
-								name="free"
-								type="checkbox"
-								checked={filters.freeOnly}
-								onChange={(event) =>
-									onSetFilters({
-										...filters,
-										freeOnly: event.target.checked,
-									})
-								}
-							/>
-							Only free games
-						</label>
+						<Checkbox
+							label="Only free games"
+							id="free"
+							name="free"
+							checked={filters.freeOnly}
+							onChange={(event) =>
+								onSetFilters({
+									...filters,
+									freeOnly: event.target.checked,
+								})
+							}
+						/>
 					</FilterLabelWrapper>
 				</FilterGroup>
 				<Divider />
