@@ -40,7 +40,7 @@ export default function SearchInput({ value, onChange }: Props) {
 			<StyledInput
 				value={value}
 				onChange={(event) => onChange(event.target.value)}
-				type="search"
+				type="text"
 				placeholder="Search…"
 				aria-label="Search for games"
 			/>
