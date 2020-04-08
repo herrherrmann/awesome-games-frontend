@@ -23,6 +23,7 @@ export type Theme = {
 		large: string;
 		huge: string;
 		borderRadius: string;
+		lineHeight: number;
 	};
 	widths: {
 		smallScreen: string;
@@ -47,6 +48,7 @@ const spacings = {
 	large: '10px',
 	huge: '20px',
 	borderRadius: '5px',
+	lineHeight: 1.2,
 };
 
 const fontSizes = {

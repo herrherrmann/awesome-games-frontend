@@ -14,13 +14,13 @@ const A = styled.a<Props>(({ theme }) => ({
 	},
 }));
 
-export default function Link(props: Props) {
+export default function Link({ openInNewTab, ...otherProps }: Props) {
 	return (
 		// eslint-disable-next-line jsx-a11y/anchor-has-content
 		<A
-			target={props.openInNewTab ? '_blank' : props.target}
-			rel={props.openInNewTab ? 'noopener noreferrer' : undefined}
-			{...props}
+			target={openInNewTab ? '_blank' : otherProps.target}
+			rel={openInNewTab ? 'noopener noreferrer' : undefined}
+			{...otherProps}
 		/>
 	);
 }

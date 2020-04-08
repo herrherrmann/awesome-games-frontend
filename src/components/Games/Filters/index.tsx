@@ -3,11 +3,11 @@ import { IoMdArrowDropdown, IoMdArrowDropright } from 'react-icons/io';
 import { Filters as FiltersType } from '..';
 import styled from '../../../common/theme';
 import Fieldset from '../../Fieldset';
-import Input from '../../Input';
 import ExpandCollapse from './ExpandCollapse';
 import FilterLabelWrapper from './FilterLabelWrapper';
 import GenreFilters from './GenreFilters';
 import ResultsCount from './ResultsCount';
+import SearchInput from './SearchInput';
 
 type Props = {
 	filters: FiltersType;
@@ -46,14 +46,11 @@ export default function Filters({
 	return (
 		<>
 			<FilterGroup role="search">
-				<Input
+				<SearchInput
 					value={filters.search || ''}
-					onChange={event =>
-						onSetFilters({ ...filters, search: event.target.value })
+					onChange={(value) =>
+						onSetFilters({ ...filters, search: value })
 					}
-					type="search"
-					placeholder="Search…"
-					aria-label="Search for games"
 				/>
 			</FilterGroup>
 			<ExpandCollapse
@@ -76,7 +73,7 @@ export default function Filters({
 								name="free"
 								type="checkbox"
 								checked={filters.freeOnly}
-								onChange={event =>
+								onChange={(event) =>
 									onSetFilters({
 										...filters,
 										freeOnly: event.target.checked,

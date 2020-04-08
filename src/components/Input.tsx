@@ -10,6 +10,7 @@ const InputElement = styled.input<Props>(({ theme }) => ({
 	borderRadius: theme.spacings.borderRadius,
 	color: theme.colors.text,
 	fontSize: theme.fontSizes.default,
+	lineHeight: theme.spacings.lineHeight,
 	'&:hover': {
 		border: `1px solid ${theme.colors.grey}`,
 	},
