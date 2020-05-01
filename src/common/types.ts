@@ -7,6 +7,7 @@ export type Game = {
 	 */
 	originalName: string;
 	description: string | null;
+	type: 'local' | 'other';
 	genres: string[];
 	releaseYear: number | null;
 	coverUrl: string | null;

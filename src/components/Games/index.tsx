@@ -1,6 +1,7 @@
 import React, { useCallback, useMemo, useState } from 'react';
 import { useAsync } from 'react-async';
 import styled from '../../common/theme';
+import { Game } from '../../common/types';
 import Filters from './Filters';
 import GameList from './GameList';
 import LoadingError from './LoadingError';
@@ -30,10 +31,19 @@ const GamesContainer = styled.div(({ theme }) => ({
 export type Filters = {
 	search: string;
 	genres: { [genre: string]: boolean };
+	types: { [type in Game['type']]: boolean };
 	freeOnly: boolean;
 };
 
-const EMPTY_FILTERS: Filters = { search: '', genres: {}, freeOnly: false };
+const EMPTY_FILTERS: Filters = {
+	search: '',
+	genres: {},
+	types: {
+		local: true,
+		other: true,
+	},
+	freeOnly: false,
+};
 
 export default function Games() {
 	const { data: games = [], isPending, error } = useAsync(loadGames);

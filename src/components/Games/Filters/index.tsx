@@ -9,6 +9,7 @@ import FilterLabelWrapper from './FilterLabelWrapper';
 import GenreFilters from './GenreFilters';
 import ResultsCount from './ResultsCount';
 import SearchInput from './SearchInput';
+import TypeFilters from './TypeFilters';
 
 type Props = {
 	filters: FiltersType;
@@ -83,6 +84,16 @@ export default function Filters({
 							}
 						/>
 					</FilterLabelWrapper>
+				</FilterGroup>
+				<Divider />
+				<FilterGroup>
+					<Fieldset>
+						<Legend>Types</Legend>
+						<TypeFilters
+							filters={filters}
+							onSetFilters={onSetFilters}
+						/>
+					</Fieldset>
 				</FilterGroup>
 				<Divider />
 				<FilterGroup>
