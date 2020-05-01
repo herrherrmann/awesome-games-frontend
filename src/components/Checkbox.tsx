@@ -78,8 +78,6 @@ const StyledIcon = styled.div(({ theme }) => ({
 	pointerEvents: 'none',
 }));
 
-const StyledLabel = styled.label<{ for: string }>();
-
 export default function Checkbox({ id, label, checked, ...otherProps }: Props) {
 	return (
 		<Container>
@@ -89,7 +87,7 @@ export default function Checkbox({ id, label, checked, ...otherProps }: Props) {
 				checked={checked}
 				{...otherProps}
 			/>
-			{label && <StyledLabel for={id!}>{label}</StyledLabel>}
+			{label && <label htmlFor={id!}>{label}</label>}
 			{checked && (
 				<StyledIcon>
 					<IoIosCheckmark />
