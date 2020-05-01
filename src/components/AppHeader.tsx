@@ -58,8 +58,8 @@ export default function AppHeader() {
 					<IoLogoGameControllerB />
 				</LogoLink>
 				<TextBlock>
-					<HeaderLink href="/">Awesome Games</HeaderLink>
-					<Subtitle>…for your couch session or LAN party.</Subtitle>
+					<HeaderLink href="/">Awesome Multiplayer Games</HeaderLink>
+					<Subtitle>For your next couch session or LAN party</Subtitle>
 				</TextBlock>
 			</HeaderInner>
 		</Header>
