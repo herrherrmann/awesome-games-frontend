@@ -38,7 +38,7 @@ export default function AppFooter() {
 				</div>
 				<div>
 					<FooterLink
-						href="https://github.com/herrherrmann/awesome-lan-party-games"
+						href="https://github.com/herrherrmann/awesome-multiplayer-games"
 						openInNewTab={true}
 					>
 						Source

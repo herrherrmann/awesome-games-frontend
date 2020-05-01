@@ -31,7 +31,7 @@ export default function GameList({ games, onResetFilters }: Props) {
 						</LinkWithOnClick>{' '}
 						|{' '}
 						<Link
-							href="https://github.com/herrherrmann/awesome-lan-party-games"
+							href="https://github.com/herrherrmann/awesome-multiplayer-games"
 							openInNewTab
 						>
 							Add a missing game
