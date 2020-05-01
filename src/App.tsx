@@ -12,7 +12,7 @@ const App: React.FC = () => {
 	return (
 		<ThemeProvider<Theme> theme={theme}>
 			<Global<Theme>
-				styles={theme => ({
+				styles={(theme) => ({
 					'*': {
 						boxSizing: 'border-box',
 					},

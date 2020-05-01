@@ -6,7 +6,7 @@ const LinkWithOnClick: FC<HTMLProps<HTMLAnchorElement>> = ({
 	...otherProps
 }) => {
 	const handleClick = useCallback(
-		event => {
+		(event) => {
 			// Prevent link/navigation.
 			event.preventDefault();
 			if (onClick) {

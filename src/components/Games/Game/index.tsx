@@ -127,7 +127,7 @@ export default function Game({ game }: Props) {
 			window.open(link, '_blank');
 		}
 	}, [link]);
-	const preventBubbling = useCallback(event => {
+	const preventBubbling = useCallback((event) => {
 		event.stopPropagation();
 	}, []);
 	return (
@@ -151,7 +151,7 @@ export default function Game({ game }: Props) {
 					<Genres>
 						{game.isFree && <FreeBadge>Free</FreeBadge>}
 						{map(
-							genre => (
+							(genre) => (
 								<Genre key={genre}>{genre}</Genre>
 							),
 							game.genres,
