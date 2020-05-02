@@ -54,7 +54,7 @@ export default function AppHeader() {
 	return (
 		<Header>
 			<HeaderInner>
-				<LogoLink href="/">
+				<LogoLink href="/" aria-hidden="true">
 					<IoLogoGameControllerB />
 				</LogoLink>
 				<TextBlock>
