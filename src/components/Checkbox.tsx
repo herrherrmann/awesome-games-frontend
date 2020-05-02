@@ -1,5 +1,5 @@
 import React, { InputHTMLAttributes } from 'react';
-import { IoIosCheckmark } from 'react-icons/io';
+import { FaCheck } from 'react-icons/fa';
 import styled from '../common/theme';
 
 type Props = InputHTMLAttributes<HTMLInputElement> & {
@@ -8,8 +8,10 @@ type Props = InputHTMLAttributes<HTMLInputElement> & {
 
 const StyledCheckbox = styled.input(
 	({ theme }) => `
-	position: absolute; // take it out of document flow
-	opacity: 0; // hide it
+	position: absolute;
+	opacity: 0;
+	margin: 0;
+	padding: 0;
 	
 	& + label {
 		position: relative;
@@ -21,7 +23,7 @@ const StyledCheckbox = styled.input(
 	& + label:before {
 		content: '';
 		margin-right: ${theme.spacings.default};
-		display: inline-block;
+		display: inline-flex;
 		width: ${theme.fontSizes.small};
 		height: ${theme.fontSizes.small};
 		border-radius: ${theme.spacings.borderRadius};
@@ -31,7 +33,7 @@ const StyledCheckbox = styled.input(
 	
 	// Box hover
 	&:hover + label:before {
-		background: ${theme.colors.greyLight};
+		border: 1px solid ${theme.colors.grey};
 	}
 	
 	// Box focus
@@ -65,16 +67,17 @@ const StyledCheckbox = styled.input(
 const Container = styled.span(({ theme }) => ({
 	position: 'relative',
 	display: 'inline-block',
+	lineHeight: 1,
 }));
 
 const StyledIcon = styled.div(({ theme }) => ({
 	position: 'absolute',
-	top: 1,
-	left: 0,
+	top: 4,
+	bottom: 0,
+	left: 3,
 	color: theme.colors.cardBackground,
-	fontSize: theme.fontSizes.default,
+	fontSize: 8,
 	width: theme.fontSizes.small,
-	height: theme.fontSizes.small,
 	pointerEvents: 'none',
 }));
 
@@ -90,7 +93,7 @@ export default function Checkbox({ id, label, checked, ...otherProps }: Props) {
 			{label && <label htmlFor={id!}>{label}</label>}
 			{checked && (
 				<StyledIcon>
-					<IoIosCheckmark />
+					<FaCheck />
 				</StyledIcon>
 			)}
 		</Container>
