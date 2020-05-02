@@ -31,8 +31,9 @@ const Divider = styled.hr(({ theme }) => ({
 }));
 
 const Header = styled.h3(({ theme }) => ({
-	margin: `${theme.spacings.default} 0 ${theme.spacings.default} 0`,
+	margin: `${theme.spacings.default} 0`,
 	padding: 0,
+	lineHeight: theme.spacings.lineHeight,
 	fontSize: theme.fontSizes.default,
 	fontWeight: theme.fontWeights.bold,
 	color: theme.colors.greyDark,
