@@ -26,14 +26,8 @@ export default function GameList({ games, onResetFilters }: Props) {
 				<div>
 					<NoGamesFound>No games match your filters.</NoGamesFound>
 					<small>
-						<LinkWithOnClick onClick={onResetFilters}>
-							Reset Filters
-						</LinkWithOnClick>{' '}
-						|{' '}
-						<Link
-							href="https://github.com/herrherrmann/awesome-multiplayer-games"
-							openInNewTab
-						>
+						<LinkWithOnClick onClick={onResetFilters}>Reset Filters</LinkWithOnClick> |{' '}
+						<Link href="https://github.com/herrherrmann/awesome-multiplayer-games" openInNewTab>
 							Add a missing game
 						</Link>
 					</small>

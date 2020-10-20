@@ -84,12 +84,7 @@ const StyledIcon = styled.div(({ theme }) => ({
 export default function Checkbox({ id, label, checked, ...otherProps }: Props) {
 	return (
 		<Container>
-			<StyledCheckbox
-				type="checkbox"
-				id={id}
-				checked={checked}
-				{...otherProps}
-			/>
+			<StyledCheckbox type="checkbox" id={id} checked={checked} {...otherProps} />
 			{label && <label htmlFor={id!}>{label}</label>}
 			{checked && (
 				<StyledIcon>

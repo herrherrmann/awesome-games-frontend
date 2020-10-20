@@ -37,16 +37,10 @@ export default function AppFooter() {
 					</Link>
 				</div>
 				<div>
-					<FooterLink
-						href="https://github.com/herrherrmann/awesome-multiplayer-games"
-						openInNewTab={true}
-					>
+					<FooterLink href="https://github.com/herrherrmann/awesome-multiplayer-games" openInNewTab={true}>
 						Source
 					</FooterLink>
-					<FooterLink
-						href="https://github.com/herrherrmann/awesome-games-frontend"
-						openInNewTab={true}
-					>
+					<FooterLink href="https://github.com/herrherrmann/awesome-games-frontend" openInNewTab={true}>
 						GitHub
 					</FooterLink>
 				</div>

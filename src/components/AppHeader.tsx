@@ -59,9 +59,7 @@ export default function AppHeader() {
 				</LogoLink>
 				<TextBlock>
 					<HeaderLink href="/">Awesome Multiplayer Games</HeaderLink>
-					<Subtitle>
-						For your next couch session or LAN party
-					</Subtitle>
+					<Subtitle>For your next couch session or LAN party</Subtitle>
 				</TextBlock>
 			</HeaderInner>
 		</Header>

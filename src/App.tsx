@@ -36,13 +36,10 @@ const App: React.FC = () => {
 						boxShadow: `0 0 0 2px ${theme.colors.primary}`,
 					},
 					'::selection': {
-						background:
-							theme.colors
-								.primaryLight /* WebKit/Blink Browsers */,
+						background: theme.colors.primaryLight /* WebKit/Blink Browsers */,
 					},
 					'::-moz-selection': {
-						background:
-							theme.colors.primaryLight /* Gecko Browsers */,
+						background: theme.colors.primaryLight /* Gecko Browsers */,
 					},
 				})}
 			/>

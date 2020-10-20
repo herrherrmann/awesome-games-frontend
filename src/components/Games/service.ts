@@ -1,15 +1,4 @@
-import {
-	all,
-	ascend,
-	compose,
-	flatten,
-	identity,
-	intersection,
-	map,
-	sortWith,
-	toPairs,
-	uniq,
-} from 'ramda';
+import { all, ascend, compose, flatten, identity, intersection, map, sortWith, toPairs, uniq } from 'ramda';
 import { Filters } from '.';
 import api from '../../common/api';
 import { Game } from '../../common/types';
@@ -24,12 +13,8 @@ export function filterGames(games: Game[], filters: Filters): Game[] {
 		all(Boolean, [
 			filters.freeOnly ? game.isFree : true,
 			isAllOffOrOn(filters.types) || filters.types[game.type],
-			filters.search
-				? game.name.toLowerCase().includes(filters.search.toLowerCase())
-				: true,
-			allowedGenres.length
-				? intersection(game.genres, allowedGenres).length > 0
-				: true,
+			filters.search ? game.name.toLowerCase().includes(filters.search.toLowerCase()) : true,
+			allowedGenres.length ? intersection(game.genres, allowedGenres).length > 0 : true,
 		]),
 	);
 }

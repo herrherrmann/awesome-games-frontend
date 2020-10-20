@@ -40,21 +40,19 @@ const NameContainer = styled.div(({ theme }) => ({
 	display: 'flex',
 }));
 
-const CoverContainer = styled.div<{ size?: string }>(
-	({ theme, size = '43px' }) => ({
-		display: 'flex',
-		justifyContent: 'center',
-		alignItems: 'center',
-		minWidth: size,
-		width: size,
-		height: size,
-		minHeight: size,
-		overflow: 'hidden',
-		marginRight: theme.spacings.default,
-		borderRadius: theme.spacings.borderRadius,
-		backgroundColor: theme.colors.greyLight,
-	}),
-);
+const CoverContainer = styled.div<{ size?: string }>(({ theme, size = '43px' }) => ({
+	display: 'flex',
+	justifyContent: 'center',
+	alignItems: 'center',
+	minWidth: size,
+	width: size,
+	height: size,
+	minHeight: size,
+	overflow: 'hidden',
+	marginRight: theme.spacings.default,
+	borderRadius: theme.spacings.borderRadius,
+	backgroundColor: theme.colors.greyLight,
+}));
 
 const Cover = styled.img(() => ({
 	width: '100%',
@@ -161,29 +159,17 @@ export default function Game({ game }: Props) {
 			</NameContainer>
 			<GameLinks>
 				{game.links.website && (
-					<ButtonLink
-						onClick={preventBubbling}
-						openInNewTab
-						href={game.links.website}
-					>
+					<ButtonLink onClick={preventBubbling} openInNewTab href={game.links.website}>
 						Website
 					</ButtonLink>
 				)}
 				{game.links.igdb && (
-					<ButtonLink
-						onClick={preventBubbling}
-						openInNewTab
-						href={game.links.igdb}
-					>
+					<ButtonLink onClick={preventBubbling} openInNewTab href={game.links.igdb}>
 						IGDB
 					</ButtonLink>
 				)}
 				{game.links.steam && (
-					<ButtonLink
-						onClick={preventBubbling}
-						openInNewTab
-						href={game.links.steam}
-					>
+					<ButtonLink onClick={preventBubbling} openInNewTab href={game.links.steam}>
 						Steam
 					</ButtonLink>
 				)}

@@ -18,8 +18,7 @@ export default function LoadingError() {
 			Games could not be loaded.
 			<br />
 			<small>
-				The server might be starting right now, please{' '}
-				<Link href="/">try again</Link> in a minute.
+				The server might be starting right now, please <Link href="/">try again</Link> in a minute.
 			</small>
 		</Container>
 	);

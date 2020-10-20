@@ -41,20 +41,13 @@ const Header = styled.h3(({ theme }) => ({
 
 const Legend = Header.withComponent('legend');
 
-export default function Filters({
-	filters,
-	onSetFilters,
-	genres,
-	resultLength,
-}: Props) {
+export default function Filters({ filters, onSetFilters, genres, resultLength }: Props) {
 	return (
 		<>
 			<FilterGroup role="search">
 				<SearchInput
 					value={filters.search || ''}
-					onChange={(value) =>
-						onSetFilters({ ...filters, search: value })
-					}
+					onChange={(value) => onSetFilters({ ...filters, search: value })}
 				/>
 			</FilterGroup>
 			<ExpandCollapse
@@ -90,21 +83,14 @@ export default function Filters({
 				<FilterGroup>
 					<Fieldset>
 						<Legend>Types</Legend>
-						<TypeFilters
-							filters={filters}
-							onSetFilters={onSetFilters}
-						/>
+						<TypeFilters filters={filters} onSetFilters={onSetFilters} />
 					</Fieldset>
 				</FilterGroup>
 				<Divider />
 				<FilterGroup>
 					<Fieldset>
 						<Legend>Genres</Legend>
-						<GenreFilters
-							filters={filters}
-							onSetFilters={onSetFilters}
-							genres={genres}
-						/>
+						<GenreFilters filters={filters} onSetFilters={onSetFilters} genres={genres} />
 					</Fieldset>
 				</FilterGroup>
 			</ExpandCollapse>

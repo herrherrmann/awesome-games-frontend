@@ -51,10 +51,7 @@ export default function Games() {
 	const resetFilters = useCallback(() => {
 		setFilters(EMPTY_FILTERS);
 	}, [setFilters]);
-	const filteredGames = useMemo(() => filterGames(games, filters), [
-		games,
-		filters,
-	]);
+	const filteredGames = useMemo(() => filterGames(games, filters), [games, filters]);
 	const genres = useMemo(() => getGenres(games), [games]);
 	if (isPending) {
 		return <LoadingPending />;

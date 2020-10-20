@@ -118,13 +118,11 @@ export function getCurrentTheme(): Theme {
 }
 
 export function getColorScheme(): ColorScheme | null {
-	const isDarkMode = window.matchMedia('(prefers-color-scheme: dark)')
-		.matches;
+	const isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches;
 	if (isDarkMode) {
 		return 'dark';
 	}
-	const isLightMode = window.matchMedia('(prefers-color-scheme: light)')
-		.matches;
+	const isLightMode = window.matchMedia('(prefers-color-scheme: light)').matches;
 	if (isLightMode) {
 		return 'light';
 	}
