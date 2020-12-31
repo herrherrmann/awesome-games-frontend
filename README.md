@@ -2,6 +2,8 @@
 
 The webapp for the [Awesome Multiplayer Games website](https://multiplayer.page), connecting to the [awesome-games-api](https://github.com/herrherrmann/awesome-games-api).
 
+![Screenshot](./screenshot.jpg)
+
 ## Available Scripts
 
 ### `yarn start`
