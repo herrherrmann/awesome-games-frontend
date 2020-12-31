@@ -14,9 +14,6 @@ type GameCardProps = {
 const GameCard = styled.div<GameCardProps>(({ hasLink, theme }) => ({
 	backgroundColor: theme.colors.cardBackground,
 	display: 'flex',
-	[`@media (max-width: ${theme.widths.smallScreen})`]: {
-		flexWrap: 'wrap',
-	},
 	justifyContent: 'space-between',
 	padding: theme.spacings.default,
 	marginBottom: theme.spacings.default,
@@ -36,16 +33,11 @@ const GameCard = styled.div<GameCardProps>(({ hasLink, theme }) => ({
 		: {},
 }));
 
-const NameContainer = styled.div(({ theme }) => ({
-	display: 'flex',
-}));
-
 const CoverContainer = styled.div<{ size?: string }>(({ theme, size = '43px' }) => ({
 	display: 'flex',
+	flex: `0 0 ${size}`,
 	justifyContent: 'center',
 	alignItems: 'center',
-	minWidth: size,
-	width: size,
 	height: size,
 	minHeight: size,
 	overflow: 'hidden',
@@ -65,15 +57,18 @@ const CoverPlaceholder = styled.img(() => ({
 	opacity: 0.25,
 }));
 
+const NameContainer = styled.div(() => ({
+	flex: '1 1 auto',
+}));
+
 const Name = styled.h3(({ theme }) => ({
 	fontSize: theme.fontSizes.default,
 	fontWeight: theme.fontWeights.bold,
-	wordBreak: 'break-all',
-	margin: 0,
-	minWidth: '150px',
+	wordBreak: 'break-word',
+	margin: `0 ${theme.spacings.default} 0 0`,
 }));
 
-const Genres = styled.div(({ theme }) => ({
+const Genres = styled.div(() => ({
 	display: 'flex',
 	flexWrap: 'wrap',
 }));
@@ -95,8 +90,12 @@ const FreeBadge = styled(Pillbox)(({ theme }) => ({
 
 const GameLinks = styled.div(({ theme }) => ({
 	display: 'flex',
-	alignItems: 'center',
-	minWidth: '130px',
+	alignItems: 'flex-start',
+	flex: '0 0 auto',
+	paddingTop: theme.spacings.default,
+	[`@media (max-width: ${theme.widths.smallScreen})`]: {
+		fontSize: theme.fontSizes.small,
+	},
 }));
 
 const ButtonLink = styled(Link)(({ theme }) => ({
@@ -136,26 +135,24 @@ export default function Game({ game }: Props) {
 			role={link ? 'link' : undefined}
 			aria-label={link ? `${game.name}'s website` : undefined}
 		>
+			<CoverContainer>
+				{game.coverUrl ? (
+					<Cover src={game.coverUrl} alt="Game cover art" loading="lazy" />
+				) : (
+					<CoverPlaceholder src={gamePadIcon} alt="" />
+				)}
+			</CoverContainer>
 			<NameContainer>
-				<CoverContainer>
-					{game.coverUrl ? (
-						<Cover src={game.coverUrl} alt="Game cover art" />
-					) : (
-						<CoverPlaceholder src={gamePadIcon} alt="" />
+				<Name>{game.name}</Name>
+				<Genres>
+					{game.isFree && <FreeBadge>Free</FreeBadge>}
+					{map(
+						(genre) => (
+							<Genre key={genre}>{genre}</Genre>
+						),
+						game.genres,
 					)}
-				</CoverContainer>
-				<div>
-					<Name>{game.name}</Name>
-					<Genres>
-						{game.isFree && <FreeBadge>Free</FreeBadge>}
-						{map(
-							(genre) => (
-								<Genre key={genre}>{genre}</Genre>
-							),
-							game.genres,
-						)}
-					</Genres>
-				</div>
+				</Genres>
 			</NameContainer>
 			<GameLinks>
 				{game.links.website && (
