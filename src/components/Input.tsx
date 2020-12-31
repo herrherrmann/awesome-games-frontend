@@ -4,6 +4,7 @@ import styled from '../common/theme';
 type Props = InputHTMLAttributes<HTMLInputElement> & {};
 
 const InputElement = styled.input<Props>(({ theme }) => ({
+	appearance: 'none',
 	width: '100%',
 	padding: `${theme.spacings.default} ${theme.spacings.default}`,
 	border: `1px solid ${theme.colors.greyLight}`,
