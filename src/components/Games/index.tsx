@@ -2,7 +2,7 @@ import React, { useCallback, useMemo, useState } from 'react';
 import { useAsync } from 'react-async';
 import styled from '../../common/theme';
 import { Game } from '../../common/types';
-import Filters from './Filters';
+import FiltersComponent from './Filters';
 import GameList from './GameList';
 import LoadingError from './LoadingError';
 import LoadingPending from './LoadingPending';
@@ -62,7 +62,7 @@ export default function Games() {
 	return (
 		<LayoutContainer>
 			<FiltersContainer>
-				<Filters
+				<FiltersComponent
 					filters={filters}
 					onSetFilters={setFilters}
 					genres={genres}
