@@ -4,15 +4,15 @@
   "dependencies": {
     "@emotion/react": "11.11.1",
     "@emotion/styled": "11.11.0",
-    "@types/jest": "26.0.10",
-    "@types/node": "14.6.0",
+    "@types/jest": "29.5.2",
+    "@types/node": "20.4.1",
     "@types/react": "18.2.14",
-    "@types/react-dom": "16.9.8",
+    "@types/react-dom": "18.2.6",
     "next": "^13.4.9",
     "ramda": "^0.29.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-icons": "^3.11.0",
+    "react-icons": "^4.10.1",
     "typescript": "5.1.6"
   },
   "scripts": {
