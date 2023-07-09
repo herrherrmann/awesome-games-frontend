@@ -29,6 +29,7 @@ declare module '@emotion/react' {
 			maxContentWidth: string;
 		};
 		fontSizes: {
+			extraSmall: string;
 			small: string;
 			default: string;
 			large: string;

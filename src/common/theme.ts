@@ -12,6 +12,7 @@ const spacings = {
 };
 
 const fontSizes = {
+	extraSmall: '10px',
 	small: '12px',
 	default: '15px',
 	large: '18px',
