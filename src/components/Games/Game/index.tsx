@@ -1,4 +1,3 @@
-import { map } from 'ramda';
 import React, { useCallback } from 'react';
 import styled from '../../../common/theme';
 import { Game as GameType } from '../../../common/types';
@@ -146,12 +145,9 @@ export default function Game({ game }: Props) {
 				<Name>{game.name}</Name>
 				<Genres>
 					{game.isFree && <FreeBadge>Free</FreeBadge>}
-					{map(
-						(genre) => (
-							<Genre key={genre}>{genre}</Genre>
-						),
-						game.genres,
-					)}
+					{game.genres.map((genre) => (
+						<Genre key={genre}>{genre}</Genre>
+					))}
 				</Genres>
 			</NameContainer>
 			<GameLinks>

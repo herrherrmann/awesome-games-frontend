@@ -1,4 +1,3 @@
-import { map } from 'ramda';
 import React, { MouseEventHandler } from 'react';
 import styled from '../../common/theme';
 import { Game as GameType } from '../../common/types';
@@ -16,12 +15,9 @@ const NoGamesFound = styled.p(() => ({ margin: 0 }));
 export default function GameList({ games, onResetFilters }: Props) {
 	return (
 		<>
-			{map(
-				(game) => (
-					<Game key={game.id} game={game} />
-				),
-				games,
-			)}
+			{games.map((game) => (
+				<Game key={game.id} game={game} />
+			))}
 			{!games.length && (
 				<div>
 					<NoGamesFound>No games match your filters.</NoGamesFound>
