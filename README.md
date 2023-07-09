@@ -1,5 +1,8 @@
 # Awesome Multiplayer Games Frontend
 
+[![Netlify status badge](https://api.netlify.com/api/v1/badges/59004dbe-87e5-4334-af70-beef1ced5499/deploy-status)](https://app.netlify.com/sites/awesome-games/deploys)
+[![Lint status badge](https://github.com/herrherrmann/awesome-games-frontend/actions/workflows/lint.yml/badge.svg)](https://github.com/herrherrmann/awesome-games-frontend/actions/workflows/lint.yml)
+
 The webapp for the [Awesome Multiplayer Games website](https://multiplayer.page), connecting to the [awesome-games-api](https://github.com/herrherrmann/awesome-games-api).
 
 ![Screenshot](./screenshot.jpg)
