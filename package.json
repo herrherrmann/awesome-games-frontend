@@ -21,8 +21,7 @@
     "format": "prettier . --write",
     "lint": "next lint",
     "build": "next build",
-    "start": "next start",
-    "test": "jest test"
+    "start": "next start"
   },
   "browserslist": {
     "production": [
