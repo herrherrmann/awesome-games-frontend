@@ -1,7 +1,7 @@
 import styled from '@emotion/styled';
 import { MouseEventHandler } from 'react';
 import { Game as GameType } from '../../common/types';
-import ButtonUnstyled from '../ButtonUnstyled';
+import ButtonLinkStyle from '../ButtonLink';
 import Link from '../Link';
 import Game from './Game';
 
@@ -22,7 +22,7 @@ export default function GameList({ games, onResetFilters }: Props) {
 				<div>
 					<NoGamesFound>No games match your filters.</NoGamesFound>
 					<small>
-						<ButtonUnstyled onClick={onResetFilters}>Reset Filters</ButtonUnstyled> |{' '}
+						<ButtonLinkStyle onClick={onResetFilters}>Reset Filters</ButtonLinkStyle> |{' '}
 						<Link href="https://github.com/herrherrmann/awesome-multiplayer-games" openInNewTab>
 							Add a missing game
 						</Link>

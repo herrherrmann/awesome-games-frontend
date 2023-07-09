@@ -10,6 +10,7 @@ type Props = LinkProps & React.ComponentPropsWithoutRef<'a'>;
 const A = styled.a<LinkProps>(({ theme }) => ({
 	color: theme.colors.primary,
 	textDecoration: 'none',
+	borderRadius: theme.spacings.borderRadius,
 	'&:hover': {
 		color: theme.colors.primaryDark,
 		textDecoration: 'underline',
