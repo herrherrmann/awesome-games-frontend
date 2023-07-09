@@ -2,7 +2,6 @@ import styled from '@emotion/styled';
 import React, { useCallback } from 'react';
 import { Game as GameType } from '../../../common/types';
 import Link from '../../Link';
-import gamePadIcon from './gamepad.svg';
 
 type Props = { game: GameType };
 
@@ -138,7 +137,7 @@ export default function Game({ game }: Props) {
 				{game.coverUrl ? (
 					<Cover src={game.coverUrl} alt="Game cover art" loading="lazy" />
 				) : (
-					<CoverPlaceholder src={gamePadIcon} alt="" />
+					<CoverPlaceholder src="/gamepad.svg" alt="" />
 				)}
 			</CoverContainer>
 			<NameContainer>
