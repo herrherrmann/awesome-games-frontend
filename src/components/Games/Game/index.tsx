@@ -122,7 +122,7 @@ export default function Game({ game }: Props) {
 			window.open(link, '_blank');
 		}
 	}, [link]);
-	const preventBubbling = useCallback((event) => {
+	const preventBubbling = useCallback((event: React.MouseEvent) => {
 		event.stopPropagation();
 	}, []);
 	return (
