@@ -44,7 +44,7 @@ export default function CustomApp({ Component, pageProps }: AppProps) {
 			/>
 			<AppHeader />
 			<AppBody>
-				<Component {...pageProps} />;
+				<Component {...pageProps} />
 			</AppBody>
 			<AppFooter />
 		</ThemeProvider>
