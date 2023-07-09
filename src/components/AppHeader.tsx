@@ -3,10 +3,12 @@ import { IoLogoGameControllerB } from 'react-icons/io';
 import styled from '@emotion/styled';
 import Link from './Link';
 
+const notATinyPhone = '@media (min-width: 320px)';
+
 const Header = styled.header(({ theme }) => ({
 	backgroundColor: theme.colors.primary,
 	color: theme.colors.background,
-	padding: `${theme.spacings.large} 0`,
+	padding: theme.spacings.large,
 	marginBottom: theme.spacings.default,
 	fontSize: theme.fontSizes.large,
 	fontWeight: theme.fontWeights.bold,
@@ -15,9 +17,13 @@ const Header = styled.header(({ theme }) => ({
 
 const HeaderInner = styled.div(({ theme }) => ({
 	display: 'flex',
+	justifyContent: 'center',
+	alignItems: 'center',
 	maxWidth: theme.widths.maxContentWidth,
 	margin: '0 auto',
-	padding: `0 ${theme.spacings.default}`,
+	[`@media (min-width: ${theme.widths.smallScreen})`]: {
+		justifyContent: 'flex-start',
+	},
 }));
 
 const LOGO_SIZE = '36px';
@@ -30,7 +36,7 @@ const LogoLink = styled(Link)(({ theme }) => ({
 	width: LOGO_SIZE,
 	height: LOGO_SIZE,
 	fontSize: LOGO_SIZE,
-	marginRight: theme.spacings.default,
+	marginRight: theme.spacings.large,
 }));
 
 const TextBlock = styled.div`
@@ -39,15 +45,24 @@ const TextBlock = styled.div`
 `;
 
 const HeaderLink = styled(Link)(({ theme }) => ({
+	fontSize: theme.fontSizes.small,
+	fontWeight: theme.fontWeights.bold,
 	color: theme.colors.background,
 	'&:hover, &:focus': {
 		color: theme.colors.background,
 		textDecoration: 'underline',
 	},
+	[notATinyPhone]: {
+		fontSize: theme.fontSizes.default,
+	},
 }));
 
 const Subtitle = styled.small(({ theme }) => ({
 	color: theme.colors.background,
+	fontSize: theme.fontSizes.extraSmall,
+	[notATinyPhone]: {
+		fontSize: theme.fontSizes.small,
+	},
 }));
 
 export default function AppHeader() {

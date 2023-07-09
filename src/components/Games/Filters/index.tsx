@@ -1,7 +1,5 @@
-import React from 'react';
-import { IoMdArrowDropdown, IoMdArrowDropright } from 'react-icons/io';
-import { Filters as FiltersType } from '..';
 import styled from '@emotion/styled';
+import { Filters as FiltersType } from '..';
 import Checkbox from '../../Checkbox';
 import Fieldset from '../../Fieldset';
 import ExpandCollapse from './ExpandCollapse';
@@ -50,18 +48,7 @@ export default function Filters({ filters, onSetFilters, genres, resultLength }:
 					onChange={(value) => onSetFilters({ ...filters, search: value })}
 				/>
 			</FilterGroup>
-			<ExpandCollapse
-				expand={
-					<>
-						<IoMdArrowDropright /> More Filters
-					</>
-				}
-				collapse={
-					<>
-						<IoMdArrowDropdown /> More Filters
-					</>
-				}
-			>
+			<ExpandCollapse label="More filters">
 				<Divider />
 				<FilterGroup>
 					<FilterLabelWrapper>

@@ -1,10 +1,10 @@
 import styled from '@emotion/styled';
-import React, { PropsWithChildren, ReactNode, useState } from 'react';
-import LinkWithOnClick from '../../LinkWithOnClick';
+import { PropsWithChildren, ReactNode, useMemo, useState } from 'react';
+import { IoMdArrowDropdown, IoMdArrowDropright } from 'react-icons/io';
+import ButtonUnstyled from '../../ButtonUnstyled';
 
 type Props = {
-	expand: ReactNode;
-	collapse: ReactNode;
+	label: ReactNode;
 };
 
 const Trigger = styled.div(({ theme }) => ({
@@ -20,18 +20,31 @@ const Content = styled.div<{ isExpanded: boolean }>(({ isExpanded, theme }) => (
 	},
 }));
 
-export default function ExpandCollapse({ children, expand, collapse }: PropsWithChildren<Props>) {
+const ButtonUnstyledWithIcon = styled(ButtonUnstyled)(({ theme }) => ({
+	display: 'flex',
+	alignItems: 'center',
+	gap: theme.spacings.small,
+}));
+
+export default function ExpandCollapse({ children, label }: PropsWithChildren<Props>) {
+	const uniqueId = useMemo(() => {
+		return `expand-collapse-${Math.random().toString(16).slice(2)}`;
+	}, []);
 	const [isExpanded, setExpanded] = useState<boolean>(false);
 	return (
 		<>
 			<Trigger>
-				{isExpanded ? (
-					<LinkWithOnClick onClick={() => setExpanded(false)}>{collapse}</LinkWithOnClick>
-				) : (
-					<LinkWithOnClick onClick={() => setExpanded(true)}>{expand}</LinkWithOnClick>
-				)}
+				<ButtonUnstyledWithIcon
+					onClick={() => setExpanded((prev) => !prev)}
+					aria-expanded={isExpanded}
+					aria-controls={uniqueId}
+				>
+					{isExpanded ? <IoMdArrowDropdown /> : <IoMdArrowDropright />} {label}
+				</ButtonUnstyledWithIcon>
 			</Trigger>
-			<Content isExpanded={isExpanded}>{children}</Content>
+			<Content isExpanded={isExpanded} id={uniqueId}>
+				{children}
+			</Content>
 		</>
 	);
 }
