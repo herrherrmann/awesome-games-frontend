@@ -36,7 +36,7 @@ const LogoLink = styled(Link)(({ theme }) => ({
 	width: LOGO_SIZE,
 	height: LOGO_SIZE,
 	fontSize: LOGO_SIZE,
-	marginRight: theme.spacings.default,
+	marginRight: theme.spacings.large,
 }));
 
 const TextBlock = styled.div`
