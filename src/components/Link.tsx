@@ -1,11 +1,13 @@
-import React, { HTMLProps } from 'react';
 import styled from '@emotion/styled';
+import React from 'react';
 
-interface Props extends HTMLProps<HTMLAnchorElement> {
+type LinkProps = {
 	openInNewTab?: boolean;
-}
+};
 
-const A = styled.a<Props>(({ theme }) => ({
+type Props = LinkProps & React.ComponentPropsWithoutRef<'a'>;
+
+const A = styled.a<LinkProps>(({ theme }) => ({
 	color: theme.colors.primary,
 	textDecoration: 'none',
 	'&:hover': {
@@ -18,9 +20,9 @@ export default function Link({ openInNewTab, ...otherProps }: Props) {
 	return (
 		// eslint-disable-next-line jsx-a11y/anchor-has-content
 		<A
-			target={openInNewTab ? '_blank' : otherProps.target}
-			rel={openInNewTab ? 'noopener noreferrer' : undefined}
 			{...otherProps}
+			target={openInNewTab ? '_blank' : otherProps.target}
+			rel={openInNewTab ? 'noopener noreferrer' : otherProps.rel}
 		/>
 	);
 }

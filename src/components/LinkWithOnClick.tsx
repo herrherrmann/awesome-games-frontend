@@ -3,7 +3,7 @@ import Link from './Link';
 
 const LinkWithOnClick: FC<HTMLProps<HTMLAnchorElement>> = ({ onClick, ...otherProps }) => {
 	const handleClick = useCallback(
-		(event) => {
+		(event: React.MouseEvent<HTMLAnchorElement>) => {
 			// Prevent link/navigation.
 			event.preventDefault();
 			if (onClick) {
