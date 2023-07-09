@@ -1,8 +1,8 @@
 import type { GetStaticProps, InferGetStaticPropsType } from 'next';
-import React from 'react';
 import { loadGames } from '../common/api';
 import { Game } from '../common/types';
 import Games from '../components/Games';
+import GamesHead from '../components/Games/Head';
 
 type Props = {
 	games: Game[];
@@ -17,5 +17,10 @@ export const getStaticProps: GetStaticProps<Props> = async () => {
 };
 
 export default function HomePage({ games }: InferGetStaticPropsType<typeof getStaticProps>) {
-	return <Games games={games} />;
+	return (
+		<>
+			<GamesHead />
+			<Games games={games} />
+		</>
+	);
 }
