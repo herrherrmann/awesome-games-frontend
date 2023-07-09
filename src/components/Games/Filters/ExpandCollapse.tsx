@@ -1,5 +1,5 @@
 import styled from '@emotion/styled';
-import { PropsWithChildren, ReactNode, useState } from 'react';
+import { PropsWithChildren, ReactNode, useMemo, useState } from 'react';
 import { IoMdArrowDropdown, IoMdArrowDropright } from 'react-icons/io';
 import ButtonUnstyled from '../../ButtonUnstyled';
 
@@ -27,6 +27,9 @@ const ButtonUnstyledWithIcon = styled(ButtonUnstyled)(({ theme }) => ({
 }));
 
 export default function ExpandCollapse({ children, label }: PropsWithChildren<Props>) {
+	const uniqueId = useMemo(() => {
+		return `expand-collapse-${Math.random().toString(16).slice(2)}`;
+	}, []);
 	const [isExpanded, setExpanded] = useState<boolean>(false);
 	return (
 		<>
@@ -34,12 +37,12 @@ export default function ExpandCollapse({ children, label }: PropsWithChildren<Pr
 				<ButtonUnstyledWithIcon
 					onClick={() => setExpanded((prev) => !prev)}
 					aria-expanded={isExpanded}
-					aria-controls="expand-collapse-content"
+					aria-controls={uniqueId}
 				>
 					{isExpanded ? <IoMdArrowDropdown /> : <IoMdArrowDropright />} {label}
 				</ButtonUnstyledWithIcon>
 			</Trigger>
-			<Content isExpanded={isExpanded} id="expand-collapse-content">
+			<Content isExpanded={isExpanded} id={uniqueId}>
 				{children}
 			</Content>
 		</>
