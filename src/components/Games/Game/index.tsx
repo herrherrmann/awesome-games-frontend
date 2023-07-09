@@ -118,7 +118,7 @@ const ButtonLink = styled(Link)(({ theme }) => ({
 export default function Game({ game }: Props) {
 	const link = game.links.website || game.links.igdb;
 	const handleClick = useCallback(() => {
-		if (!!link) {
+		if (link) {
 			window.open(link, '_blank');
 		}
 	}, [link]);

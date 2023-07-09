@@ -1,9 +1,9 @@
-import React, { ButtonHTMLAttributes } from 'react';
 import styled from '@emotion/styled';
+import { ButtonHTMLAttributes } from 'react';
 
-interface Props extends ButtonHTMLAttributes<HTMLButtonElement> {}
+type Props = ButtonHTMLAttributes<HTMLButtonElement>;
 
-const StyledButton = styled.button<Props>(({ theme }) => ({
+const StyledButton = styled.button(({ theme }) => ({
 	fontSize: theme.fontSizes.default,
 	color: theme.colors.text,
 	border: `1px solid ${theme.colors.greyLight}`,
