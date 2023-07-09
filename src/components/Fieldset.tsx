@@ -1,4 +1,4 @@
-import styled from '../common/theme';
+import styled from '@emotion/styled';
 
 const Fieldset = styled.fieldset(({ theme }) => ({
 	border: 'none',

@@ -1,6 +1,6 @@
 import React from 'react';
 import { IoLogoGameControllerB } from 'react-icons/io';
-import styled from '../common/theme';
+import styled from '@emotion/styled';
 import Link from './Link';
 
 const Header = styled.header(({ theme }) => ({

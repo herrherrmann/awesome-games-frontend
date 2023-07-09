@@ -1,5 +1,5 @@
+import styled from '@emotion/styled';
 import React, { PropsWithChildren } from 'react';
-import styled from '../common/theme';
 
 type Props = {};
 

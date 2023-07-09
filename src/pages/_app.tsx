@@ -1,8 +1,7 @@
-import { Global } from '@emotion/core';
-import { ThemeProvider } from 'emotion-theming';
+import { Global, Theme, ThemeProvider } from '@emotion/react';
 import type { AppProps } from 'next/app';
 import React, { useState } from 'react';
-import { getCurrentTheme, Theme } from '../common/theme';
+import { getCurrentTheme } from '../common/theme';
 import AppBody from '../components/AppBody';
 import AppFooter from '../components/AppFooter';
 import AppHeader from '../components/AppHeader';
@@ -10,8 +9,8 @@ import AppHeader from '../components/AppHeader';
 export default function CustomApp({ Component, pageProps }: AppProps) {
 	const [theme] = useState<Theme>(getCurrentTheme());
 	return (
-		<ThemeProvider<Theme> theme={theme}>
-			<Global<Theme>
+		<ThemeProvider theme={theme}>
+			<Global
 				styles={(theme) => ({
 					'*': {
 						boxSizing: 'border-box',

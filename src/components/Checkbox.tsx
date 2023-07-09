@@ -1,6 +1,6 @@
 import React, { InputHTMLAttributes } from 'react';
 import { FaCheck } from 'react-icons/fa';
-import styled from '../common/theme';
+import styled from '@emotion/styled';
 
 type Props = InputHTMLAttributes<HTMLInputElement> & {
 	label?: string;

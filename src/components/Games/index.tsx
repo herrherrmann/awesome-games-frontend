@@ -1,5 +1,5 @@
 import React, { useCallback, useMemo, useState } from 'react';
-import styled from '../../common/theme';
+import styled from '@emotion/styled';
 import { Game } from '../../common/types';
 import FiltersComponent from './Filters';
 import GameList from './GameList';

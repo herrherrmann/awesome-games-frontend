@@ -1,5 +1,5 @@
+import styled from '@emotion/styled';
 import React, { useCallback } from 'react';
-import styled from '../../../common/theme';
 import { Game as GameType } from '../../../common/types';
 import Link from '../../Link';
 import gamePadIcon from './gamepad.svg';

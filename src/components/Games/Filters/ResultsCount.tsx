@@ -1,5 +1,5 @@
 import React from 'react';
-import styled from '../../../common/theme';
+import styled from '@emotion/styled';
 
 type Props = {
 	count: number;

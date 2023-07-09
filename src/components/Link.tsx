@@ -1,5 +1,5 @@
 import React, { HTMLProps } from 'react';
-import styled from '../common/theme';
+import styled from '@emotion/styled';
 
 interface Props extends HTMLProps<HTMLAnchorElement> {
 	openInNewTab?: boolean;

@@ -1,5 +1,5 @@
 import React, { MouseEventHandler } from 'react';
-import styled from '../../common/theme';
+import styled from '@emotion/styled';
 import { Game as GameType } from '../../common/types';
 import Link from '../Link';
 import LinkWithOnClick from '../LinkWithOnClick';

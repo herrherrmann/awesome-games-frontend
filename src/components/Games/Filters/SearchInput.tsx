@@ -1,6 +1,6 @@
 import React from 'react';
 import { IoIosClose } from 'react-icons/io';
-import styled from '../../../common/theme';
+import styled from '@emotion/styled';
 import Button from '../../Button';
 import Input from '../../Input';
 
