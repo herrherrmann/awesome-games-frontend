@@ -4,18 +4,23 @@ The webapp for the [Awesome Multiplayer Games website](https://multiplayer.page)
 
 ![Screenshot](./screenshot.jpg)
 
+## Setup
+
+- Install the node version defined in `.nvmrc` (e.g. via `nvm install` or `nvm use`)
+- Install dependencies via `npm install`
+
 ## Available Scripts
 
-### `yarn start`
+### `npm run start`
 
 Runs the app in the development mode.<br />
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-### `yarn test`
+### `npm test`
 
 Launches the test runner in the interactive watch mode.<br />
 See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-### `yarn build`
+### `npm run build`
 
 Builds the app for production to the `build` folder.
