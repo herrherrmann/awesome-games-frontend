@@ -1,11 +1,6 @@
 import { all, ascend, compose, flatten, identity, intersection, map, sortWith, toPairs, uniq } from 'ramda';
 import { Filters } from '.';
-import api from '../../common/api';
 import { Game } from '../../common/types';
-
-export function loadGames(): Promise<Game[]> {
-	return api.get('/games');
-}
 
 export function filterGames(games: Game[], filters: Filters): Game[] {
 	const allowedGenres = getAllowedGenres(filters.genres);

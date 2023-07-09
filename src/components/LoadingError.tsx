@@ -1,6 +1,6 @@
 import React from 'react';
-import styled from '../../common/theme';
-import Link from '../Link';
+import styled from '../common/theme';
+import Link from './Link';
 
 const Container = styled.div(({ theme }) => ({
 	color: theme.colors.error,

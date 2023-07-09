@@ -1,49 +1,46 @@
 {
-	"name": "awesome-games-frontend",
-	"version": "1.0.0",
-	"dependencies": {
-		"@emotion/core": "^10.0.35",
-		"@emotion/styled": "^10.0.27",
-		"@types/jest": "26.0.10",
-		"@types/node": "14.6.0",
-		"@types/react": "16.9.47",
-		"@types/react-dom": "16.9.8",
-		"axios": "^0.20.0",
-		"debounce": "^1.2.0",
-		"emotion-theming": "^10.0.27",
-		"ramda": "^0.27.1",
-		"react": "^16.13.1",
-		"react-async": "^10.0.1",
-		"react-dom": "^16.13.1",
-		"react-icons": "^3.11.0",
-		"react-scripts": "3.4.3",
-		"typescript": "3.9.7",
-		"use-url-search-params": "^2.3.13"
-	},
-	"scripts": {
-		"start": "react-scripts --openssl-legacy-provider start",
-		"build": "react-scripts --openssl-legacy-provider build",
-		"test": "react-scripts test",
-		"eject": "react-scripts eject"
-	},
-	"eslintConfig": {
-		"extends": "react-app"
-	},
-	"browserslist": {
-		"production": [
-			">0.2%",
-			"not dead",
-			"not op_mini all"
-		],
-		"development": [
-			"last 1 chrome version",
-			"last 1 firefox version",
-			"last 1 safari version"
-		]
-	},
-	"devDependencies": {
-		"@types/debounce": "^1.2.0",
-		"@types/ramda": "^0.27.14",
-		"prettier": "^2.1.0"
-	}
+  "name": "awesome-games-frontend",
+  "version": "1.1.0",
+  "dependencies": {
+    "@emotion/core": "^10.0.35",
+    "@emotion/styled": "^10.0.27",
+    "@types/jest": "26.0.10",
+    "@types/node": "14.6.0",
+    "@types/react": "18.2.14",
+    "@types/react-dom": "16.9.8",
+    "emotion-theming": "^10.0.27",
+    "next": "^13.4.9",
+    "ramda": "^0.29.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-icons": "^3.11.0",
+    "typescript": "5.1.6"
+  },
+  "scripts": {
+	"postinstall": "next telemetry disable",
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "test": "jest test"
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "devDependencies": {
+    "@types/debounce": "^1.2.0",
+    "@types/ramda": "^0.29.3",
+    "prettier": "^2.1.0"
+  }
 }

@@ -1,12 +1,9 @@
 import React, { useCallback, useMemo, useState } from 'react';
-import { useAsync } from 'react-async';
 import styled from '../../common/theme';
 import { Game } from '../../common/types';
 import FiltersComponent from './Filters';
 import GameList from './GameList';
-import LoadingError from './LoadingError';
-import LoadingPending from './LoadingPending';
-import { filterGames, getGenres, loadGames } from './service';
+import { filterGames, getGenres } from './service';
 
 const LayoutContainer = styled.div(({ theme }) => ({
 	[`@media (min-width: ${theme.widths.smallScreen})`]: {
@@ -24,7 +21,7 @@ const FiltersContainer = styled.div(({ theme }) => ({
 	},
 }));
 
-const GamesContainer = styled.div(({ theme }) => ({
+const GamesContainer = styled.div(() => ({
 	flex: '1 1',
 }));
 
@@ -45,20 +42,17 @@ const EMPTY_FILTERS: Filters = {
 	freeOnly: false,
 };
 
-export default function Games() {
-	const { data: games = [], isPending, error } = useAsync(loadGames);
+type Props = {
+	games: Game[];
+};
+
+export default function Games({ games }: Props) {
 	const [filters, setFilters] = useState<Filters>(EMPTY_FILTERS);
 	const resetFilters = useCallback(() => {
 		setFilters(EMPTY_FILTERS);
 	}, [setFilters]);
 	const filteredGames = useMemo(() => filterGames(games, filters), [games, filters]);
 	const genres = useMemo(() => getGenres(games), [games]);
-	if (isPending) {
-		return <LoadingPending />;
-	}
-	if (error) {
-		return <LoadingError />;
-	}
 	return (
 		<LayoutContainer>
 			<FiltersContainer>

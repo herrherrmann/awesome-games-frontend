@@ -11,7 +11,7 @@ type Props = {
 	onResetFilters: MouseEventHandler<HTMLAnchorElement>;
 };
 
-const NoGamesFound = styled.p(({ theme }) => ({ margin: 0 }));
+const NoGamesFound = styled.p(() => ({ margin: 0 }));
 
 export default function GameList({ games, onResetFilters }: Props) {
 	return (
