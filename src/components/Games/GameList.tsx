@@ -1,13 +1,13 @@
-import React, { MouseEventHandler } from 'react';
 import styled from '@emotion/styled';
+import { MouseEventHandler } from 'react';
 import { Game as GameType } from '../../common/types';
+import ButtonUnstyled from '../ButtonUnstyled';
 import Link from '../Link';
-import LinkWithOnClick from '../LinkWithOnClick';
 import Game from './Game';
 
 type Props = {
 	games: GameType[];
-	onResetFilters: MouseEventHandler<HTMLAnchorElement>;
+	onResetFilters: MouseEventHandler<HTMLButtonElement>;
 };
 
 const NoGamesFound = styled.p(() => ({ margin: 0 }));
@@ -22,7 +22,7 @@ export default function GameList({ games, onResetFilters }: Props) {
 				<div>
 					<NoGamesFound>No games match your filters.</NoGamesFound>
 					<small>
-						<LinkWithOnClick onClick={onResetFilters}>Reset Filters</LinkWithOnClick> |{' '}
+						<ButtonUnstyled onClick={onResetFilters}>Reset Filters</ButtonUnstyled> |{' '}
 						<Link href="https://github.com/herrherrmann/awesome-multiplayer-games" openInNewTab>
 							Add a missing game
 						</Link>
