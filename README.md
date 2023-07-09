@@ -6,12 +6,12 @@ The webapp for the [Awesome Multiplayer Games website](https://multiplayer.page)
 
 ## Setup
 
-- Install the node version defined in `.nvmrc` (e.g. via `nvm install` or `nvm use`)
-- Install dependencies via `npm install`
+-   Install the node version defined in `.nvmrc` (e.g. via `nvm install` or `nvm use`)
+-   Install dependencies via `npm install`
 
 ## Available Scripts
 
-### `npm run start`
+### `npm run dev`
 
 Runs the app in the development mode.<br />
 Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
@@ -20,6 +20,14 @@ Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
 Launches the test runner in the interactive watch mode.<br />
 See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+
+### `npm run format`
+
+Format the code with Prettier.
+
+### `npm run lint`
+
+Lint the code with ESLint.
 
 ### `npm run build`
 

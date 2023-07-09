@@ -1,9 +1,7 @@
-import { map } from 'ramda';
+import styled from '@emotion/styled';
 import React, { useCallback } from 'react';
-import styled from '../../../common/theme';
 import { Game as GameType } from '../../../common/types';
 import Link from '../../Link';
-import gamePadIcon from './gamepad.svg';
 
 type Props = { game: GameType };
 
@@ -120,11 +118,11 @@ const ButtonLink = styled(Link)(({ theme }) => ({
 export default function Game({ game }: Props) {
 	const link = game.links.website || game.links.igdb;
 	const handleClick = useCallback(() => {
-		if (!!link) {
+		if (link) {
 			window.open(link, '_blank');
 		}
 	}, [link]);
-	const preventBubbling = useCallback((event) => {
+	const preventBubbling = useCallback((event: React.MouseEvent) => {
 		event.stopPropagation();
 	}, []);
 	return (
@@ -139,19 +137,16 @@ export default function Game({ game }: Props) {
 				{game.coverUrl ? (
 					<Cover src={game.coverUrl} alt="Game cover art" loading="lazy" />
 				) : (
-					<CoverPlaceholder src={gamePadIcon} alt="" />
+					<CoverPlaceholder src="/gamepad.svg" alt="" />
 				)}
 			</CoverContainer>
 			<NameContainer>
 				<Name>{game.name}</Name>
 				<Genres>
 					{game.isFree && <FreeBadge>Free</FreeBadge>}
-					{map(
-						(genre) => (
-							<Genre key={genre}>{genre}</Genre>
-						),
-						game.genres,
-					)}
+					{game.genres.map((genre) => (
+						<Genre key={genre}>{genre}</Genre>
+					))}
 				</Genres>
 			</NameContainer>
 			<GameLinks>

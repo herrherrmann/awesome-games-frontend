@@ -1,6 +1,5 @@
-import { map } from 'ramda';
 import React, { MouseEventHandler } from 'react';
-import styled from '../../common/theme';
+import styled from '@emotion/styled';
 import { Game as GameType } from '../../common/types';
 import Link from '../Link';
 import LinkWithOnClick from '../LinkWithOnClick';
@@ -11,17 +10,14 @@ type Props = {
 	onResetFilters: MouseEventHandler<HTMLAnchorElement>;
 };
 
-const NoGamesFound = styled.p(({ theme }) => ({ margin: 0 }));
+const NoGamesFound = styled.p(() => ({ margin: 0 }));
 
 export default function GameList({ games, onResetFilters }: Props) {
 	return (
 		<>
-			{map(
-				(game) => (
-					<Game key={game.id} game={game} />
-				),
-				games,
-			)}
+			{games.map((game) => (
+				<Game key={game.id} game={game} />
+			))}
 			{!games.length && (
 				<div>
 					<NoGamesFound>No games match your filters.</NoGamesFound>

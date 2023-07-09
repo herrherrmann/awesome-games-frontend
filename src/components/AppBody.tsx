@@ -1,7 +1,5 @@
-import React, { PropsWithChildren } from 'react';
-import styled from '../common/theme';
-
-type Props = {};
+import styled from '@emotion/styled';
+import { PropsWithChildren } from 'react';
 
 const roughHeaderAndFooterHeight = '100px';
 
@@ -12,6 +10,6 @@ const Body = styled.main(({ theme }) => ({
 	padding: theme.spacings.default,
 }));
 
-export default function AppBody({ children }: PropsWithChildren<Props>) {
+export default function AppBody({ children }: PropsWithChildren) {
 	return <Body>{children}</Body>;
 }

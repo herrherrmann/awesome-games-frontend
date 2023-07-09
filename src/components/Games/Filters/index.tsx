@@ -1,7 +1,7 @@
 import React from 'react';
 import { IoMdArrowDropdown, IoMdArrowDropright } from 'react-icons/io';
 import { Filters as FiltersType } from '..';
-import styled from '../../../common/theme';
+import styled from '@emotion/styled';
 import Checkbox from '../../Checkbox';
 import Fieldset from '../../Fieldset';
 import ExpandCollapse from './ExpandCollapse';

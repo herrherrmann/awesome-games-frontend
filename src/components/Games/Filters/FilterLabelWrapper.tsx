@@ -1,4 +1,4 @@
-import styled from '../../../common/theme';
+import styled from '@emotion/styled';
 
 const FilterLabelWrapper = styled.div(({ theme }) => ({
 	marginTop: 0,

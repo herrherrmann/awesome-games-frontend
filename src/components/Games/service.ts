@@ -1,11 +1,6 @@
-import { all, ascend, compose, flatten, identity, intersection, map, sortWith, toPairs, uniq } from 'ramda';
+import { all, intersection, uniq } from 'ramda';
 import { Filters } from '.';
-import api from '../../common/api';
 import { Game } from '../../common/types';
-
-export function loadGames(): Promise<Game[]> {
-	return api.get('/games');
-}
 
 export function filterGames(games: Game[], filters: Filters): Game[] {
 	const allowedGenres = getAllowedGenres(filters.genres);
@@ -24,17 +19,18 @@ function isAllOffOrOn(types: Filters['types']): boolean {
 	return uniq(flags).length === 1;
 }
 
-function getAllowedGenres(genres: { [genre: string]: boolean }): string[] {
-	return toPairs(genres)
-		.filter(([, isEnabled]) => isEnabled)
-		.map(([genre]) => genre);
+type GenreMap = {
+	[genre: string]: boolean;
+};
+
+function getAllowedGenres(genres: GenreMap): string[] {
+	const entries = Object.entries(genres);
+	const entriesWithTrue = entries.filter(([, isEnabled]) => isEnabled);
+	return entriesWithTrue.map(([genre]) => genre);
 }
 
 export function getGenres(games: Game[]): string[] {
-	return compose<Game[], string[][], string[], string[], string[]>(
-		sortWith([ascend(identity)]),
-		uniq,
-		flatten,
-		map<Game, string[]>((game) => game.genres),
-	)(games);
+	const genres = games.flatMap((game) => game.genres);
+	const uniqueGenres = [...new Set(genres)];
+	return uniqueGenres.sort();
 }

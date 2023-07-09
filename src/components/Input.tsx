@@ -1,9 +1,9 @@
-import React, { InputHTMLAttributes } from 'react';
-import styled from '../common/theme';
+import styled from '@emotion/styled';
+import { InputHTMLAttributes } from 'react';
 
-type Props = InputHTMLAttributes<HTMLInputElement> & {};
+type Props = InputHTMLAttributes<HTMLInputElement>;
 
-const InputElement = styled.input<Props>(({ theme }) => ({
+const InputElement = styled.input(({ theme }) => ({
 	appearance: 'none',
 	width: '100%',
 	padding: `${theme.spacings.default} ${theme.spacings.default}`,

@@ -1,6 +1,6 @@
 import React, { InputHTMLAttributes } from 'react';
 import { FaCheck } from 'react-icons/fa';
-import styled from '../common/theme';
+import styled from '@emotion/styled';
 
 type Props = InputHTMLAttributes<HTMLInputElement> & {
 	label?: string;
@@ -64,7 +64,7 @@ const StyledCheckbox = styled.input(
 	}`,
 );
 
-const Container = styled.span(({ theme }) => ({
+const Container = styled.span(() => ({
 	position: 'relative',
 	display: 'inline-block',
 	lineHeight: 1,
@@ -85,7 +85,7 @@ export default function Checkbox({ id, label, checked, ...otherProps }: Props) {
 	return (
 		<Container>
 			<StyledCheckbox type="checkbox" id={id} checked={checked} {...otherProps} />
-			{label && <label htmlFor={id!}>{label}</label>}
+			{label && <label htmlFor={id}>{label}</label>}
 			{checked && (
 				<StyledIcon>
 					<FaCheck />
