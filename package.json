@@ -1,20 +1,6 @@
 {
   "name": "awesome-games-frontend",
   "version": "1.1.0",
-  "dependencies": {
-    "@emotion/react": "11.11.1",
-    "@emotion/styled": "11.11.0",
-    "@types/jest": "29.5.2",
-    "@types/node": "20.4.1",
-    "@types/react": "18.2.14",
-    "@types/react-dom": "18.2.6",
-    "next": "^13.4.9",
-    "ramda": "^0.29.0",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "react-icons": "^4.10.1",
-    "typescript": "5.1.6"
-  },
   "scripts": {
     "postinstall": "next telemetry disable",
     "dev": "next dev",
@@ -22,6 +8,30 @@
     "lint": "next lint",
     "build": "next build",
     "start": "next start"
+  },
+  "dependencies": {
+    "@emotion/react": "11.11.1",
+    "@emotion/styled": "11.11.0",
+    "@types/jest": "29.5.10",
+    "@types/node": "20.10.0",
+    "@types/react": "18.2.38",
+    "@types/react-dom": "18.2.17",
+    "next": "14.0.3",
+    "ramda": "0.29.1",
+    "react": "18.2.0",
+    "react-dom": "18.2.0",
+    "react-icons": "4.12.0",
+    "typescript": "5.3.2"
+  },
+  "devDependencies": {
+    "@types/ramda": "0.29.9",
+    "@typescript-eslint/eslint-plugin": "6.12.0",
+    "@typescript-eslint/parser": "6.12.0",
+    "eslint": "8.54.0",
+    "eslint-config-next": "14.0.3",
+    "eslint-config-prettier": "9.0.0",
+    "eslint-plugin-react": "7.33.2",
+    "prettier": "3.1.0"
   },
   "browserslist": {
     "production": [
@@ -34,15 +44,5 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  },
-  "devDependencies": {
-    "@types/ramda": "^0.29.3",
-    "@typescript-eslint/eslint-plugin": "^5.61.0",
-    "@typescript-eslint/parser": "^5.61.0",
-    "eslint": "^8.44.0",
-    "eslint-config-next": "^13.4.9",
-    "eslint-config-prettier": "^8.8.0",
-    "eslint-plugin-react": "^7.32.2",
-    "prettier": "2.8.8"
   }
 }
