@@ -1,9 +1,6 @@
 import { Game } from './types';
 
-/**
- * Backend API, use 'http://localhost:3000' for local development.
- */
-const API = 'https://awesome-games-api.onrender.com';
+const API = process.env.BACKEND_API;
 
 export async function loadGames(): Promise<Game[]> {
 	const response = await fetch(`${API}/games`);

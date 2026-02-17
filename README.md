@@ -9,8 +9,9 @@ The webapp for the [Awesome Multiplayer Games website](https://multiplayer.page)
 
 ## Setup
 
--   Install the node version defined in `.nvmrc` (e.g. via `nvm install` or `nvm use`)
--   Install dependencies via `npm install`
+1. Install the node version defined in `.nvmrc` (e.g. via `nvm install` or `nvm use`)
+2. Install dependencies via `npm install`
+3. Copy `.env.example` to `.env` and replace the variables
 
 ## Available Scripts
 
